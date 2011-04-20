@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Username:</b>
+  <%= @user.username %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b>Crypted password:</b>
+  <%= @user.crypted_password %>
+</p>
+
+<p>
+  <b>Pasword salt:</b>
+  <%= @user.pasword_salt %>
+</p>
+
+<p>
+  <b>Persistence token:</b>
+  <%= @user.persistence_token %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
