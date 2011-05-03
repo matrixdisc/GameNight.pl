@@ -9,6 +9,9 @@ gem 'sqlite3'
 gem 'authlogic'
 gem 'formtastic'
 gem 'gravtastic'
+group :development do
+	gem 'annotate-models'
+end
 # Use unicorn as the web server
 # gem 'unicorn'
 
