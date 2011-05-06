@@ -12,13 +12,6 @@
 
 ActiveRecord::Schema.define(:version => 20110505142544) do
 
-  create_table "friends", :force => true do |t|
-    t.integer  "id_1"
-    t.integer  "id_2"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table :invites do |t|
     t.column :user_id, :integer, :null => false           # source of the relationship
     t.column :user_id_target, :integer, :null => false    # target of the relationship
