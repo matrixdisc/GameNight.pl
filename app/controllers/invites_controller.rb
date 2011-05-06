@@ -1,8 +1,5 @@
 class InvitesController < ApplicationController
   def index
-  end
-
-  def show
     @invites = Invite.find(:all).select{|i|i.user_id = current_user}.select{|i|i.is_accepted!=true}
   end
 

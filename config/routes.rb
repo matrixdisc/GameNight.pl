@@ -5,7 +5,6 @@ GameNightPl::Application.routes.draw do
   match 'login' => 'user_sessions#new', :as => :login
   match 'friends' => 'friends#show', :as => :friends
   match 'logout' => 'user_sessions#destroy', :as => :logout
-  match 'friendreqs' => 'invites#show', :as => :friendreqs
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
