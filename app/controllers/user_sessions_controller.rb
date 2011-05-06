@@ -37,4 +37,7 @@ class UserSessionsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  def index
+    @user_session = UserSession.find
+  end
 end

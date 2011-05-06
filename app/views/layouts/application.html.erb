@@ -9,7 +9,10 @@
 <body>
     <div id="nav">
         <% if current_user %>
-          <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
+          Hello, <strong><%= current_user.firstname %></strong>! |
+          <%= link_to "Edit Profile", edit_user_path(current_user.id) %> |
+          <%= link_to "Show friends", :friends %> |
+          <%= link_to "Show friend requests", :friendreqs %> |
           <%= link_to "Logout", :logout%>
         <% else %>
           <%= link_to "Register", new_user_path%>

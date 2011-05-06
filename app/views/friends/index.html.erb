@@ -1,0 +1,11 @@
+<h1>My friends</h1>
+<table>
+    <% @user.friends.each do |friend| %>
+      <tr>
+        <td><%= friend.username %></td>
+        <td><%= friend.email %></td>
+        <td><%= link_to 'Show', friend %></td></td>
+      </tr>
+    <% end %>
+</table>
+<p>done</p>
