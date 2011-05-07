@@ -1,15 +1,28 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  username: MyString
-  email: MyString
-  crypted_password: MyString
-  pasword_salt: MyString
-  persistence_token: MyString
+marcel:
+  username: monoik
+  firstname: Marcel
+  lastname: Makowski
+  email: marcel.makowski@gmail.com
+  crypted_password: 88cf48f880dd485b9f310480f649ffefbad42f90c04dc6dbd1af42344150db2fcdbb3d1aeeff53cd3af56c3de4338b82f32007cbdd278d226c785f62f8beab3c
+  pasword_salt: em2Ns5I0facvWQUlXfQ0
+  persistence_token: 06195cf9fdb2fc4ce92c4a1ab7cf5559a9db2c79b6f9f53d1cc327a4a978d3893a9b3b407c123af44b67b35e82163ae49a4202774748b1a7ebfdf9896040b982
 
-two:
-  username: MyString
-  email: MyString
-  crypted_password: MyString
-  pasword_salt: MyString
-  persistence_token: MyString
+ma_trix:
+  username: ma_trix
+  firstname: Mateusz
+  lastname: Łukomski
+  email: matrix.disc@gmail.com
+  crypted_password: 8d2615cd3236150a824ab0124632e9be52ebcc668f85af99945ef506256014d2ce9c741e6e9ba490e46fb941caad7b703c1b96af946be3febece0b285fbe3a5b
+  password_salt: Yxuu1jb1V750DR4TN1qz
+  persistence_token: ccd2d01257ed3d83b6e2969c9fa62547bce62f068ad5bbdc7fb2672e8f6346c1519c574d1981adca36555197198b802bab448e209ac1155d785d1f7ed3011e4f
+
+maciej:
+  username: maciejk
+  firstname: Maciej
+  lastname: Kowalewski
+  email: maciejk@whatever.pl
+  crypted_password: ec4a96a394a0192a2cf3c2d8a05a2995bbb27f1b929e1524dab3e0307e4deea61e1dc2cb8fd33189d9f7cc59c6a9482eaeaf94d75988cfb024d17cdf8ff1d36c
+  password_salt: 2v18CvL8Ztt97slndO73
+  persistence_token: ce3783c2bcd510babfe606a02cd11c61e21570cb54ae66e6dceb205b80dcd46d960e97106f73acfca40a6ac73b876151d386141ba44842aba437d46fe9e5f3ac

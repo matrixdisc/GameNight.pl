@@ -1,5 +1,11 @@
 <p id="notice"><%= notice %></p>
 
+<% if current_user.friends.include?(@user) %>
+    <p><strong>Friend</strong></p>
+<% end %>
+<p>
+  <%= @user.firstname %> <%= @user.lastname %>
+</p>
 <p>
   <b>Username:</b>
   <%= @user.username %>
@@ -25,6 +31,13 @@
   <%= @user.persistence_token %>
 </p>
 
+<p><%= @count %></p>
+<% if not(current_user.eql?(@user)) and not (current_user.friends.include?(@user))  %>
 
+    <%= link_to 'Send invite', :controller => "friends", :action => "send_invite", :id => @user %> |
+<% end %>
+<% if current_user.friends.include?(@user)  %>
+    <%= link_to 'End friendship', :controller => "friends", :action => "end_friendship", :id => @user %> |
+<% end %>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
