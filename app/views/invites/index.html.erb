@@ -1,12 +1,15 @@
-<h1>My friend requests</h1><table>
-<% @invites.each do |invite| %>
-  <tr>
-    <td>From: <strong><%= invite.user.firstname%> <%= invite.user.lastname%> (<%= invite.user.username%>) accepted=> <%= invite.is_accepted %></strong></td>
-    <td><%= link_to 'Accept', accept_invite_path(:id => invite.id) %></td>
-    <td><%= link_to 'Reject', invite, :confirm => 'Are you sure?', :method => :delete %></td>
+<h1>My friend requests</h1>
+<table>
+    <% @invites_in.each do |invite| %>
+      <tr>
+        <td>ID: <%= invite.id %></td>
+        <td>From: <strong><%= invite.user.firstname%> <%= invite.user.lastname%> (<%= invite.user.username%>)</strong></td>
+        <td> accepted=> <%= invite.is_accepted %></td>
+        <td><%= link_to 'Accept', accept_invite_path(:id => invite.id) %></td>
+        <td><%= link_to 'Reject', invite, :confirm => 'Are you sure?', :method => :delete %></td>
       </tr>
+    <% end %>
+</table>
+<% if @invites_in.count().eql?(0) %>
+    <p>No one wants to be your friend. :( </p>
 <% end %>
-  <% if @invites.count().eql?(0) %>
-    No one wants to be your friend. :(
-  <% end %>
-      </table>

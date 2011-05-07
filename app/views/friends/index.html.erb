@@ -8,4 +8,6 @@
       </tr>
     <% end %>
 </table>
-<p>done</p>
+<% if @user.friends.count() == 0%>
+    <p>You have no friends. Go make some!</p>
+<% end %>

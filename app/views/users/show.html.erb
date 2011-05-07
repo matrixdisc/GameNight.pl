@@ -37,7 +37,7 @@
     <%= link_to 'Send invite', :controller => "friends", :action => "send_invite", :id => @user %> |
 <% end %>
 <% if current_user.friends.include?(@user)  %>
-    End friendship |
+    <%= link_to 'End friendship', :controller => "friends", :action => "end_friendship", :id => @user %> |
 <% end %>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
