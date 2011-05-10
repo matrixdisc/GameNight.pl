@@ -1,0 +1,2 @@
+module GamenightsHelper
+end

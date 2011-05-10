@@ -30,6 +30,20 @@ ActiveRecord::Schema.define(:version => 20110511154727) do
     t.datetime "accepted_at"
   end
 
+  create_table "gamenights", :force => true do |t|
+    t.integer  "host_id"
+    t.string   "name"
+    t.string   "description"
+    t.string   "location"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer  "players_slots"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "gamenights", ["host_id"], :name => "index_gamenights_on_host_id"
+
   create_table "users", :force => true do |t|
     t.string   "username"
     t.string   "email"

@@ -1,0 +1,36 @@
+# == Schema Information
+# Schema version: 20110503230850
+#
+# Table name: gamenights
+#
+#  id            :integer         not null, primary key
+#  host_id       :integer
+#  name          :string(255)
+#  description   :string(255)
+#  location      :string(255)
+#  start_time    :datetime
+#  end_time      :datetime
+#  players_slots :integer
+#  created_at    :datetime
+#  updated_at    :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  host: 
+  name: MyString
+  description: MyString
+  location: MyString
+  start_time: MyString
+  end_time: MyString
+  players_slots: 1
+
+two:
+  host: 
+  name: MyString
+  description: MyString
+  location: MyString
+  start_time: MyString
+  end_time: MyString
+  players_slots: 1
