@@ -14,8 +14,8 @@ class UsersController < ApplicationController
   # GET /users/1.xml
   def show
     @user = User.find(params[:id])
-
-    respond_to do |format|
+    @count = Invite.count(:conditions => ["user_id = ? and user_id_target = ?", current_user.id, @user.id])
+      respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user }
     end
