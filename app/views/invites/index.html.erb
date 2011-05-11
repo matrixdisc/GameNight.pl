@@ -3,7 +3,7 @@
     <% @invites_in.each do |invite| %>
       <tr>
         <td>ID: <%= invite.id %></td>
-        <td>From: <strong><%= invite.user.firstname%> <%= invite.user.lastname%> (<%= invite.user.username%>)</strong></td>
+        <td>From: <strong><%= invite.user.first_name%> <%= invite.user.last_name%> (<%= invite.user.username%>)</strong></td>
         <td> accepted=> <%= invite.is_accepted %></td>
         <td><%= link_to 'Accept', accept_invite_path(:id => invite.id) %></td>
         <td><%= link_to 'Reject', invite, :confirm => 'Are you sure?', :method => :delete %></td>
