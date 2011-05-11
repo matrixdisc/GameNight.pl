@@ -10,11 +10,11 @@
         <div id="container">
             <div id="header">
                 <ul id="logo">
-                  <li><img src="./images/logo1.png"/></li>
+                  <li><img src="/images/logo1.png"/></li>
                 </ul>
                 <ul id="nav">
                     <% if current_user %>
-                      <li>Hello, <strong><%= current_user.firstname %></strong>!</li>
+                      <li>Hello, <strong><%= current_user.first_name %></strong>!</li>
 
                       <li><%= link_to "Edit Profile", edit_user_path(current_user.id) %></li>
                       <li><%= link_to "Show friends", :friends %></li>

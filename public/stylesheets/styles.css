@@ -6,5 +6,6 @@
 .user_list .user_avatar img { border: 1px solid gray; }
 .clear_fix { clear: both; }
 
-.avatar { float: left; margin-right: 15px;}
-.full_name { font-size: 24px; padding-top: 15px; }
+.avatar { float: left; margin-right: 15px; margin-bottom: 40px;}
+#content .full_name { margin: 0px;}
+#content .user_name { margin: 0; color: #ababab;}
