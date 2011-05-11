@@ -1,43 +1,22 @@
 <p id="notice"><%= notice %></p>
-
+<div class="user_profile">
+  <%= image_tag @user.gravatar_url, :class => "avatar" %>
+  <h1 class="full_name"><%= @user.full_name %></h1>
+  <h2 class="user_name"><%= @user.username %></h2>
+  <div class="clear_fix"></div>
+</div>
 <% if current_user.friends.include?(@user) %>
     <p><strong>Friend</strong></p>
 <% end %>
-<p>
-  <%= @user.first_name %> <%= @user.last_name %>
-</p>
-<p>
-  <b>Username:</b>
-  <%= @user.username %>
-</p>
 
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
 
-<p>
-  <b>Crypted password:</b>
-  <%= @user.crypted_password %>
-</p>
-
-<p>
-  <b>Password salt:</b>
-  <%= @user.password_salt %>
-</p>
-
-<p>
-  <b>Persistence token:</b>
-  <%= @user.persistence_token %>
-</p>
-
-<p><%= @count %></p>
-<% if not(current_user.eql?(@user)) and not (current_user.friends.include?(@user))  %>
+<% if not(current_user.eql?(@user)) and not (current_user.friends.include?(@user)) %>
 
     <%= link_to 'Send invite', :controller => "friends", :action => "send_invite", :id => @user %> |
 <% end %>
-<% if current_user.friends.include?(@user)  %>
+<% if current_user.friends.include?(@user) %>
     <%= link_to 'End friendship', :controller => "friends", :action => "end_friendship", :id => @user %> |
 <% end %>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
