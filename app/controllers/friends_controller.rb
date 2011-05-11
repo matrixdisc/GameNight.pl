@@ -1,14 +1,4 @@
 class FriendsController < ApplicationController
-  # GET /friends/1
-  def show
-    @user = User.find(params[:id])
-
-    respond_to do |format|
-      format.html
-      format.xml  { render :xml => @user }
-    end
-  end
-
   def send_invite
     @user = User.find(params[:id])
     @count = Invite.count(:conditions => ["user_id = ? and user_id_target = ?", current_user.id, @user.id])
@@ -34,7 +24,7 @@ class FriendsController < ApplicationController
   def index
     @user = current_user
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.xml  { render :xml => @user }
     end
   end
