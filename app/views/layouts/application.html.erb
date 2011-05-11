@@ -1,27 +1,35 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>GameNightPl</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
-</head>
-<body>
-    <div id="nav">
-        <% if current_user %>
-          Hello, <strong><%= current_user.firstname %></strong>! |
+    <head>
+      <title>GameNightPl</title>
+      <%= stylesheet_link_tag :all %>
+      <%= javascript_include_tag :defaults %>
+      <%= csrf_meta_tag %>
+    </head>
+    <body>
+        <div id="container">
+            <div id="header">
+                <ul id="logo">
+                  <li><img src="./images/logo1.png"/></li>
+                </ul>
+                <ul id="nav">
+                    <% if current_user %>
+                      <li>Hello, <strong><%= current_user.firstname %></strong>!</li>
 
-          <%= link_to "Edit Profile", edit_user_path(current_user.id) %> |
-          <%= link_to "Show friends", :friends %> |
-          <%= link_to "Show friend requests", :invites %> |
-          <%= link_to "Browse users", users_path %> |
-          <%= link_to "Logout", :logout%>
-        <% else %> |
-          <%= link_to "Register", new_user_path%>
-          <%= link_to "Login", :login%>
-        <% end %>
-    </div>
-<%= yield %>
-
-</body>
+                      <li><%= link_to "Edit Profile", edit_user_path(current_user.id) %></li>
+                      <li><%= link_to "Show friends", :friends %></li>
+                      <li><%= link_to "Show friend requests", :invites %></li>
+                      <li><%= link_to "Browse users", users_path %></li>
+                      <li><%= link_to "Logout", :logout%></li>
+                    <% else %> |
+                      <%= link_to "Register", new_user_path%>
+                      <%= link_to "Login", :login%>
+                    <% end %>
+                </ul>
+            </div>
+            <div id="content">
+                <%= yield %>
+            </div>
+        </div>
+    </body>
 </html>
