@@ -2,8 +2,8 @@
 
 marcel:
   username: monoik
-  firstname: Marcel
-  lastname: Makowski
+  first_name: Marcel
+  last_name: Makowski
   email: marcel.makowski@gmail.com
   crypted_password: 88cf48f880dd485b9f310480f649ffefbad42f90c04dc6dbd1af42344150db2fcdbb3d1aeeff53cd3af56c3de4338b82f32007cbdd278d226c785f62f8beab3c
   pasword_salt: em2Ns5I0facvWQUlXfQ0
@@ -11,8 +11,8 @@ marcel:
 
 ma_trix:
   username: ma_trix
-  firstname: Mateusz
-  lastname: Łukomski
+  first_name: Mateusz
+  last_name: Łukomski
   email: matrix.disc@gmail.com
   crypted_password: 8d2615cd3236150a824ab0124632e9be52ebcc668f85af99945ef506256014d2ce9c741e6e9ba490e46fb941caad7b703c1b96af946be3febece0b285fbe3a5b
   password_salt: Yxuu1jb1V750DR4TN1qz
@@ -20,8 +20,8 @@ ma_trix:
 
 maciej:
   username: maciejk
-  firstname: Maciej
-  lastname: Kowalewski
+  first_name: Maciej
+  last_name: Kowalewski
   email: maciejk@whatever.pl
   crypted_password: ec4a96a394a0192a2cf3c2d8a05a2995bbb27f1b929e1524dab3e0307e4deea61e1dc2cb8fd33189d9f7cc59c6a9482eaeaf94d75988cfb024d17cdf8ff1d36c
   password_salt: 2v18CvL8Ztt97slndO73
