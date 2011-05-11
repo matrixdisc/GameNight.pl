@@ -27,8 +27,20 @@
                     <% end %>
                 </ul>
             </div>
-            <div id="content">
-              <p id="notice"><%= notice %></p>
+			<p> <%= params[:kupa]%></p>
+            <% if not(notice.nil?) %>
+				<%case params[:mood] 
+					when :negative then %>
+				<div class="notice negative">
+				<%  when :positive then %>
+				<div class="notice positive">
+				<%  when :neutral then %>
+				<div class="notice">
+				<% end %>
+				<%= notice %>
+			</div>
+			<% end %>
+			<div id="content">
                 <%= yield %>
             </div>
         </div>

@@ -7,7 +7,8 @@ class FriendsController < ApplicationController
       invite = Invite.create(:user => current_user, :user_target => @user, :message => "I wanna be your friend", :is_accepted => false)
       redirect_to(:back, :notice => "Invitation sent.")
     else
-      redirect_to(:back, :notice => "Invitation already sent.")
+      mood = :negative
+      redirect_to(:back, :notice => "Invitation already sent.", :mood => mood)
     end
   end
 
@@ -18,7 +19,8 @@ class FriendsController < ApplicationController
     Invite.delete(myinv)
     Invite.delete(targetinv)
     user.reload and current_user.reload
-    redirect_to(user, :notice => "Friendship ended succesfully.")
+    
+    redirect_to(user, :notice => "Friendship ended succesfully.", :mood => :neutral)
   end
 
   def index
