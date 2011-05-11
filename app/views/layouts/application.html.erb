@@ -21,13 +21,14 @@
                       <li><%= link_to "Show friend requests", :invites %></li>
                       <li><%= link_to "Browse users", users_path %></li>
                       <li><%= link_to "Logout", :logout%></li>
-                    <% else %> |
-                      <%= link_to "Register", new_user_path%>
-                      <%= link_to "Login", :login%>
+                    <% else %>
+                      <li><%= link_to "Register", new_user_path%></li>
+                      <li><%= link_to "Login", :login%></li>
                     <% end %>
                 </ul>
             </div>
             <div id="content">
+              <p id="notice"><%= notice %></p>
                 <%= yield %>
             </div>
         </div>
