@@ -11,9 +11,9 @@ class InvitesController < ApplicationController
     invite.save
     name = "unknown"
     if invite.user_target.eql?(current_user)
-       name = invite.user.firstname
+       name = invite.user.first_name
     else
-       name = invite.user_target.firstname
+       name = invite.user_target.first_name
     end
     redirect_to(:friends, :notice => "#{name} is now your friend!")
   end
