@@ -5,3 +5,6 @@
 .user_list a { text-decoration: none; }
 .user_list .user_avatar img { border: 1px solid gray; }
 .clear_fix { clear: both; }
+
+.avatar { float: left; margin-right: 15px;}
+.full_name { font-size: 24px; padding-top: 15px; }
