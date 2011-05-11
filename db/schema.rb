@@ -10,7 +10,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110427154748) do
+ActiveRecord::Schema.define(:version => 20110511154727) do
+
+  create_table "invitations", :force => true do |t|
+    t.integer  "user_id",        :null => false
+    t.integer  "user_id_target", :null => false
+    t.string   "code"
+    t.text     "message"
+    t.boolean  "is_accepted"
+    t.datetime "accepted_at"
+  end
+
+  create_table "invites", :force => true do |t|
+    t.integer  "user_id",        :null => false
+    t.integer  "user_id_target", :null => false
+    t.string   "code"
+    t.text     "message"
+    t.boolean  "is_accepted"
+    t.datetime "accepted_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "username"

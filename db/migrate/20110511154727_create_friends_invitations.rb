@@ -1,6 +1,6 @@
 class CreateFriendsInvitations < ActiveRecord::Migration
   def self.up
-    create_table :invitations do |t|
+    create_table :invites do |t|
       t.column :user_id, :integer, :null => false           # source of the relationship
       t.column :user_id_target, :integer, :null => false    # target of the relationship
       t.column :code, :string                                 # random invitation code
