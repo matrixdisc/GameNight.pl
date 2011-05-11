@@ -1,13 +1,2 @@
 <h1>My friends</h1>
-<table>
-    <% @user.friends.each do |friend| %>
-      <tr>
-        <td><%= friend.username %></td>
-        <td><%= friend.email %></td>
-        <td><%= link_to 'Show', friend %></td></td>
-      </tr>
-    <% end %>
-</table>
-<% if @user.friends.count() == 0%>
-    <p>You have no friends. Go make some!</p>
-<% end %>
+<%= render :partial => 'users/user_list', :locals => { :users => @user.friends } %>

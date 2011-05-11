@@ -1,0 +1,101 @@
+* {
+    outline: none;
+}
+
+body {
+    background: url("../images/body-bg.png") repeat scroll 0 0 transparent;
+    color: #343434;
+    font: 13px arial, verdana, arial, helvetica, sans-serif;
+  ;
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    background: url("../images/header-bg.png") repeat-x scroll left top transparent;
+    position: relative;
+}
+#header {
+    height: 100px;
+    margin: 0 auto;
+    position: relative;
+    width: 930px;
+    z-index: 10;
+}
+
+#content {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 0 6px #C6C6C6;
+    margin: 50px auto 100px;
+    padding: 40px;
+    position: relative;
+    width: 850px;
+    z-index: 10;
+}
+
+a {
+    color: #ff6600;
+    text-decoration: none;
+}
+
+#logo {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 0;
+    top: 17px;
+    z-index: 99;
+}
+#logo li{
+    list-style: none;
+}
+
+#nav {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 30px;
+    z-index: 99;
+}
+#nav li, #countdown li {
+    position: relative;
+    list-style: none;
+    margin: 0 0 0 8px;
+    padding: 0;
+    float: left;
+    background: transparent url(../img/nav-button-left-sprite.png) no-repeat top left;
+}
+
+#content h1 {
+    margin: 0 0 40px 0;
+    padding: 0;
+    font-family: 'Droid Sans', Arial;
+    font-weight: normal;
+    color: #363636;
+    font-size: 35px;
+}
+#content h2 {
+    margin: 0 0 20px 0;
+    padding: 0;
+    font-family: 'Droid Sans', Arial;
+    font-weight: normal;
+    color: #363636;
+    font-size: 25px;
+}
+#content h3 {
+    font-family: 'Droid Sans', Arial;
+    font-size: 24px;
+    font-weight: normal;
+    margin: 0 0 10px 0;
+    padding: 0;
+}
+#content h4 {
+    color: #343434;
+    font-family: 'Droid Sans', Arial;
+    font-size: 17px;
+    font-weight: normal;
+    margin: 0 0 10px 0;
+    padding: 0;
+}

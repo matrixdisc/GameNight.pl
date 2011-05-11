@@ -5,10 +5,17 @@ class InvitesController < ApplicationController
 
   def accept
     invite = Invite.find(params[:id])
+    @user = invite.user_target
     invite.accepted_at=Time.now
     invite.is_accepted=true
     invite.save
-    redirect_to(:friends)
+    name = "unknown"
+    if invite.user_target.eql?(current_user)
+       name = invite.user.first_name
+    else
+       name = invite.user_target.first_name
+    end
+    redirect_to(:friends, :notice => "#{name} is now your friend!")
   end
 
   def destroy
