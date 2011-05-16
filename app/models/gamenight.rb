@@ -16,7 +16,10 @@
 #
 
 class Gamenight < ActiveRecord::Base
-  attr_accessible :name, :description, :location, :start_time, :end_time, :players_slots
+  attr_accessible :name, :description, :location, :start_time, :end_time, :players_slots, :user
 
-  belongs_to :user
+  validates :name, :presence => true, :length => { :maximum => 255 }
+  validates :host_id, :presence => true
+
+  belongs_to :user, :foreign_key => 'host_id'
 end

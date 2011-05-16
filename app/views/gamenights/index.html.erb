@@ -2,18 +2,21 @@
 <p id="notice"><%= notice %></p>
 <table>
   <tr>
+    <th>Host</th>
     <th>Name</th>
     <th>Location</th>
     <th>Start time</th>
     <th></th>
   </tr>
-
+  <%= link_to 'new', :controller => "gamenights", :action => "new"%>
 <% @gamenights.each do |gamenight| %>
   <tr>
+    <td><%= link_to gamenight.user.username, gamenight.user, :action => 'show', :controller => 'users' %></td>
     <td><%= gamenight.name %></td>
     <td><%= gamenight.location %></td>
     <td><%= gamenight.start_time %></td>
-    <td><%= link_to 'Show', gamenight %></td>
+    <td><%= link_to 'show', gamenight %></td>
+    <td><%= link_to 'destroy', gamenight, :method => :delete %></td>
   </tr>
 <% end %>
 </table>
