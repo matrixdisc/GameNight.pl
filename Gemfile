@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'authlogic'
 gem 'formtastic'
 gem 'gravtastic'
+gem 'jquery-rails'
 group :development do
 	gem 'annotate-models'
 end

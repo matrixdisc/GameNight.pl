@@ -1,41 +1,12 @@
-<%= form_for(@gamenight) do |f|%>
-  <% if @gamenight.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@gamenight.errors.count, "error") %> prohibited this gamenight from being saved:</h2>
-
-      <ul>
-      <% @gamenight.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+<%= semantic_form_for(@gamenight) do |f|%>
+  <%= f.error_messages %>
+  <%= f.inputs do %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :location %>
+    <%= f.input :start_time, :as => :string, :input_html => { :size => 20, :class => 'datetime' } %>    
+    <%= f.input :end_time, :as => :string, :input_html => { :size => 20, :class => 'datetime' } %>
+    <%= f.input :players_slots %>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :location %><br />
-    <%= f.text_field :location %>
-  </div>
-  <div class="field">
-    <%= f.label :start_time %><br />
-    <%= f.text_field :start_time %>
-  </div>
-  <div class="field">
-    <%= f.label :end_time %><br />
-    <%= f.text_field :end_time %>
-  </div>
-  <div class="field">
-    <%= f.label :players_slots %><br />
-    <%= f.text_field :players_slots %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.buttons %>
 <% end %>
