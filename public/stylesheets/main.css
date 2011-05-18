@@ -2,11 +2,31 @@
     outline: none;
 }
 
+.notice{
+	position: relative;
+	font-size: 20px;
+	font-family: 'Droid Sans', Arial;
+	margin: 0 auto;
+	width: 500px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+	background-color: white;
+	box-shadow: 0 0 15px #A6A6A6;
+	padding: 40px;
+}
+
+.negative{
+	color: #B92734;
+}
+.positive{
+	color: #03FD7C;
+}
+
 body {
     background: url("../images/body-bg.png") repeat scroll 0 0 transparent;
     color: #343434;
     font: 13px arial, verdana, arial, helvetica, sans-serif;
-  ;
     margin: 0;
     padding: 0;
 }
@@ -17,9 +37,9 @@ body {
 }
 #header {
     height: 100px;
-    margin: 0 auto;
+    margin: 0 20px 0 20px;
     position: relative;
-    width: 930px;
+    /*width: 930px;*/
     z-index: 10;
 }
 

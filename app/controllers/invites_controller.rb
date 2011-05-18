@@ -15,7 +15,7 @@ class InvitesController < ApplicationController
     else
        name = invite.user_target.first_name
     end
-    redirect_to(:friends, :notice => "#{name} is now your friend!")
+    redirect_to(:friends, :notice => "#{name} is now your friend!", :mood => :positive)
   end
 
   def destroy
