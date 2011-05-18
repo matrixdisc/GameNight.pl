@@ -12,14 +12,19 @@
 
 ActiveRecord::Schema.define(:version => 20110511154727) do
 
-  create_table "invitations", :force => true do |t|
-    t.integer  "user_id",        :null => false
-    t.integer  "user_id_target", :null => false
-    t.string   "code"
-    t.text     "message"
-    t.boolean  "is_accepted"
-    t.datetime "accepted_at"
+  create_table "gamenights", :force => true do |t|
+    t.integer  "host_id"
+    t.string   "name"
+    t.string   "description"
+    t.string   "location"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer  "players_slots"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  add_index "gamenights", ["host_id"], :name => "index_gamenights_on_host_id"
 
   create_table "invites", :force => true do |t|
     t.integer  "user_id",        :null => false
