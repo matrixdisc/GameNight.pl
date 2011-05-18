@@ -1,0 +1,1 @@
+class Notifications::GameNightInvitation < Notification

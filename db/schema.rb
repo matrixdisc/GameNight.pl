@@ -12,8 +12,15 @@
 
 ActiveRecord::Schema.define(:version => 20110511154727) do
 
+  create_table "friends", :force => true do |t|
+    t.integer  "id_1"
+    t.integer  "id_2"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "gamenights", :force => true do |t|
-    t.integer  "host_id"
+    t.integer  "host_id",       :null => false
     t.string   "name"
     t.string   "description"
     t.string   "location"
@@ -26,7 +33,7 @@ ActiveRecord::Schema.define(:version => 20110511154727) do
 
   add_index "gamenights", ["host_id"], :name => "index_gamenights_on_host_id"
 
-  create_table "invites", :force => true do |t|
+  create_table "invitations", :force => true do |t|
     t.integer  "user_id",        :null => false
     t.integer  "user_id_target", :null => false
     t.string   "code"
@@ -35,8 +42,20 @@ ActiveRecord::Schema.define(:version => 20110511154727) do
     t.datetime "accepted_at"
   end
 
+  create_table "invites", :force => true do |t|
+    t.integer  "user_id",        :null => false
+    t.integer  "user_id_target", :null => false
+    t.string   "code"
+    t.text     "message"
+    t.boolean  "is_accepted"
+    t.boolean  "is_rejected"
+    t.datetime "accepted_at"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "username"
+    t.string   "firstname"
+    t.string   "lastname"
     t.string   "email"
     t.string   "crypted_password"
     t.string   "password_salt"

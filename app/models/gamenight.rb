@@ -22,4 +22,6 @@ class Gamenight < ActiveRecord::Base
   validates :host_id, :presence => true
 
   belongs_to :user, :foreign_key => 'host_id'
+  def notification_class
+    Notifications::GamenightInvitation
 end
