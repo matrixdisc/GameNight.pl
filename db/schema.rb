@@ -10,7 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110511154727) do
+ActiveRecord::Schema.define(:version => 20110522184230) do
+
+  create_table "gamenight_invitations", :force => true do |t|
+    t.integer  "user_id",      :null => false
+    t.integer  "gamenight_id", :null => false
+    t.string   "code"
+    t.text     "message"
+    t.boolean  "is_accepted"
+    t.datetime "accepted_at"
+  end
 
   create_table "gamenights", :force => true do |t|
     t.integer  "host_id"

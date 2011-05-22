@@ -22,4 +22,6 @@ class Gamenight < ActiveRecord::Base
   validates :host_id, :presence => true
 
   belongs_to :user, :foreign_key => 'host_id'
+  has_many :gamenight_invitations
+  has_many :users , :through => :gamenight_invitations
 end

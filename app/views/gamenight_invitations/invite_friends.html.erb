@@ -1,0 +1,19 @@
+<h1>Invite friends to your gamenight</h1>
+<ul class="user_list">
+    <% @user.friends.each do |friend|%>
+    <li>
+      <p>
+        <%= link_to friend do %>
+        <span class="user_avatar"><%= image_tag friend.gravatar_url %></span>
+        <span class="user_name"><%= friend.username %></span>
+        <% end %>
+        <% if friend.gamenight_invitations.find_by_gamenight_id(@gamenight.id) %>
+            <%= "Invited" %>
+        <% else %>
+            <span class="invite"><%= link_to 'invite', :controller => "gamenight_invitations", :action => "invite", :gamenight_id => params[:gamenight_id], :friend_id => friend.id %></span>
+        <% end %>
+      </p>
+    </li>
+  <% end %>
+</ul>
+<div class="clear_fix"></div>

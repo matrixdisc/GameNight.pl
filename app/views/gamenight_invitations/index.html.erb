@@ -1,0 +1,10 @@
+<h1>My gamenight invitations</h1>
+<table>
+  <% @gamenight_invitations.each do |invitation| %>
+  <tr>
+    <td>ID: <%= invitation.id %></td>
+    <td>From: <%= invitation.user.first_name %></td>
+    <td>Accepted? <%= invitation.is_accepted? %></td>
+  </tr>
+</table>
+<% end %>

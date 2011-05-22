@@ -1,3 +1,17 @@
+# == Schema Information
+# Schema version: 20110522184230
+#
+# Table name: invites
+#
+#  id             :integer         not null, primary key
+#  user_id        :integer         not null
+#  user_id_target :integer         not null
+#  code           :string(255)
+#  message        :text
+#  is_accepted    :boolean
+#  accepted_at    :datetime
+#
+
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 # This model initially had no columns defined.  If you add columns to the
