@@ -26,9 +26,21 @@
 </p>
 
 <p>
-  <b>Player slots:</b>
-  <%= @gamenight.players_slots%>
+  <b>Players:</b>
+  <%= @gamenight.gamenight_invitations.count %>
+  <% unless @gamenight.players_slots.nil? %>
+    <%= "/ " + @gamenight.players_slots.to_s %>
+  <% end %>
 </p>
+
+<p>
+  <b>Invited players:</b>
+</p>
+<ol>
+  <% @gamenight.gamenight_invitations.each do |i|%>
+  <li><%= link_to i.user.username, :controller => "users", :action => "show", :id => i.user.id %></li>
+  <% end %>
+</ol>
 
 <p>
   <b><%= link_to "Invite more players", :controller => "gamenight_invitations", :action => "invite_friends", :gamenight_id => @gamenight.id %></b>
