@@ -13,8 +13,9 @@
 ActiveRecord::Schema.define(:version => 20110522184230) do
 
   create_table "gamenight_invitations", :force => true do |t|
-    t.integer  "user_id",      :null => false
-    t.integer  "gamenight_id", :null => false
+    t.integer  "user_id",          :null => false
+    t.integer  "user_inviting_id", :null => false
+    t.integer  "gamenight_id",     :null => false
     t.string   "code"
     t.text     "message"
     t.boolean  "is_accepted"
@@ -22,8 +23,8 @@ ActiveRecord::Schema.define(:version => 20110522184230) do
   end
 
   create_table "gamenights", :force => true do |t|
-    t.integer  "host_id",    :null => false
-    t.string   "name",       :null => false
+    t.integer  "host_id",       :null => false
+    t.string   "name",          :null => false
     t.string   "description"
     t.string   "location"
     t.datetime "start_time"

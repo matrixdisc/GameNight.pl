@@ -2,6 +2,7 @@ class CreateGamenightInvitations < ActiveRecord::Migration
   def self.up
     create_table :gamenight_invitations do |t|
       t.column :user_id, :integer, :null => false
+      t.column :user_inviting_id, :integer, :null => false
       t.column :gamenight_id, :integer, :null => false
       t.column :code, :string
       t.column :message, :text
