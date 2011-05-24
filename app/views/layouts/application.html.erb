@@ -17,10 +17,11 @@
                       <li>Hello, <strong><%= current_user.first_name || current_user.username %></strong>!</li>
 
                       <li><%= link_to "Edit Profile", edit_user_path(current_user.id) %></li>
-                      <li><%= link_to "Show friends", :friends %></li>
-                      <li><%= link_to "Show friend requests", :invites %></li>
+                      <li><%= link_to "Your friends", :friends %></li>
+                      <li><%= link_to "Friend requests", :invites %></li>
                       <li><%= link_to "Browse users", users_path %></li>
-					  <li><%= link_to "Show your gamenights", :my_gamenights %></li>
+					  <li><%= link_to "Your gamenights", :my_gamenights %></li>
+                      <li><%= link_to "Gamenight invitations", :gamenight_invitations %></li>
                       <li><%= link_to "Logout", :logout%></li>
                     <% else %>
                       <li><%= link_to "Register", new_user_path%></li>

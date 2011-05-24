@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(:version => 20110522184230) do
   end
 
   create_table "gamenights", :force => true do |t|
-    t.integer  "host_id"
-    t.string   "name"
+    t.integer  "host_id",    :null => false
+    t.string   "name",       :null => false
     t.string   "description"
     t.string   "location"
     t.datetime "start_time"
@@ -56,5 +56,8 @@ ActiveRecord::Schema.define(:version => 20110522184230) do
     t.string   "last_name"
     t.string   "location"
   end
+
+  add_index "users", ["email"], :name => "index_users_on_email"
+  add_index "users", ["username"], :name => "index_users_on_username"
 
 end

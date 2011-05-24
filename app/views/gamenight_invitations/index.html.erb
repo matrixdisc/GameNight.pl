@@ -3,7 +3,8 @@
   <% @gamenight_invitations.each do |invitation| %>
   <tr>
     <td>ID: <%= invitation.id %></td>
-    <td>From: <%= invitation.user.first_name %></td>
+    <td>Gamenight: <%= link_to invitation.gamenight.name, :controller => :gamenights, :action => :show, :id => invitation.gamenight.id %></td>
+    <td>From: <%= link_to User.find_by_id(invitation.gamenight.host_id).first_name, :controller => :users, :action => :show, :id => invitation.gamenight.host_id %></td>
     <td>Accepted? <%= invitation.is_accepted? %></td>
   </tr>
 </table>
