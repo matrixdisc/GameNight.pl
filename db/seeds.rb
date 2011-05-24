@@ -26,7 +26,6 @@ else
   puts "friendship not saved"
 end
 @gamenight = Gamenight.create(:user => @matrix, :name => "First gamenight", :description => "First gamenight ever", :location => "Poznań", :start_time => "15:00 10-05-2011", :end_time => "24:00 10-05-2011", :player_slots => 5)
-#@gamenight = @matrix.gamenights.create(:name => "First gamenight", :description => "First gamenight ever", :location => "Poznań", :start_time => "15:00 10-05-2011", :end_time => "24:00 10-05-2011", :player_slots => 5)
 if @gamenight.save
   puts "gamenight saved"
 else

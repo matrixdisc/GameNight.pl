@@ -19,4 +19,17 @@ class GamenightInvitationsController < ApplicationController
       redirect_to :friends
     end
   end
+
+  def show
+    @invitation = current_user.gamenight_invitations.find_by_id :id
+    respond_to do |format|
+      format.html
+    end
+  end
+
+  def accept
+    @invitation = current_user.gamenight_invitations.find_by_id :id
+    @invitation.update_params :is_accepted => true
+    redirect_to :controller => :gamenights, :action => :show, :id => @invitation.gamenight_id
+  end
 end
