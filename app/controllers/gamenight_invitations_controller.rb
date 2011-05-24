@@ -12,7 +12,7 @@ class GamenightInvitationsController < ApplicationController
   end
 
   def invite
-    @invitation = User.find(params[:friend_id]).gamenight_invitations.create :gamenight_id => params[:gamenight_id]
+    @invitation = User.find(params[:friend_id]).gamenight_invitations.create :gamenight_id => params[:gamenight_id], :user_inviting => current_user
     if @invitation.save
       redirect_to :action => "invite_friends", :gamenight_id => params[:gamenight_id]
     else

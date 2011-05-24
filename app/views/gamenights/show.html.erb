@@ -29,3 +29,7 @@
   <b>Player slots:</b>
   <%= @gamenight.players_slots%>
 </p>
+
+<p>
+  <b><%= link_to "Invite more players", :controller => "gamenight_invitations", :action => "invite_friends", :gamenight_id => @gamenight.id %></b>
+</p>
