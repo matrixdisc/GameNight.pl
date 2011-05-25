@@ -40,7 +40,6 @@ body {
     margin: 0 20px 0 20px;
     position: relative;
     /*width: 930px;*/
-    z-index: 10;
 }
 
 #content {
@@ -51,7 +50,6 @@ body {
     padding: 40px;
     position: relative;
     width: 850px;
-    z-index: 10;
 }
 
 a {

@@ -2,11 +2,12 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.xml
   def index
-    @games = Game.all
+    @games = Game.where("name like ?", "%#{params[:q]}%") 
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @games }
+      format.json { render :json => @games.map(&:attributes) }
     end
   end
 
