@@ -16,12 +16,13 @@
 #
 
 class Gamenight < ActiveRecord::Base
-  attr_accessible :name, :description, :location, :start_time, :end_time, :players_slots, :user
+  attr_accessible :name, :description, :location, :start_time, :end_time, :players_slots, :user, :game_id
 
   validates :name, :presence => true, :length => { :maximum => 255 }
   validates :host_id, :presence => true
 
   belongs_to :user, :foreign_key => 'host_id'
+  belongs_to :game
   has_many :gamenight_invitations
   has_many :users , :through => :gamenight_invitations
 end
