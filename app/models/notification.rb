@@ -1,6 +1,6 @@
 class Notification < ActiveRecord::Base
   belongs_to :user, :class_name => 'User'
-  belongs_to :recipent, :class_name => 'User'
+  belongs_to :recipient, :class_name => 'User'
 
   validates_presence_of :user
 
@@ -23,25 +23,17 @@ class Notification < ActiveRecord::Base
       # nothing here to see, move along.
   end
 
-private
-  def self.concatenate_or_create(recipient, target, actor, notification_type)
-    if n = notification_type.where(:target_id => target.id,
-                              :target_type => target.class,
-                               :recipient_id => recipient.id,
-                               :unread => false).first
-      n.unread = true
-      n.save!
-      n
-    else
-      make_notification(recipient, target, notification_type)
-    end
-  end
 
-  def self.make_notification(recipient, target, notification_type)
-    n = notification_type.new(:target => target,
+  def self.make_notification(user, recipient, target, notification_type)
+    n = notification_type.new(:user => user,
+                              :target => target,
                                :recipient_id => recipient.id,
                                :unread => true)
     n.save!
     n
   end
+end
+
+class GameNightInvitationNotification < Notification
+
 end

@@ -2,7 +2,7 @@ class CreateGamenights < ActiveRecord::Migration
   def self.up
     create_table :gamenights do |t|
       t.integer :host_id, :null => false
-      t.string :name
+      t.string :name, :null => false
       t.string :description
       t.string :location
       t.datetime :start_time

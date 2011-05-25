@@ -1,0 +1,21 @@
+<h1>Listing gamenights</h1>
+<table>
+  <tr>
+    <th>From</th>
+    <th>To</th>
+    <th>Target</th>
+    <th></th>
+  </tr>
+<% @notifications.each do |notif| %>
+  <tr>
+    <td><%= notif.user.username %></td>
+    <td><%= notif.recipient.username %></td>
+    <td><%= notif.target.class %></td>
+
+    <td><%= link_to 'show', notif %></td>
+    <td><%= link_to 'destroy', notif, :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />

@@ -32,7 +32,7 @@ class GamenightsController < ApplicationController
     @gamenight.user = current_user
     if @gamenight.save
       flash[:success] = "New gamenight created"
-      redirect_to :my_gamenights
+      redirect_to :controller => 'gamenight_invitations', :action => 'invite_friends', :gamenight_id => @gamenight.id
     else
       render 'gamenights/new'
     end
