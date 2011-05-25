@@ -12,7 +12,7 @@ class GamenightInvitationsController < ApplicationController
   end
 
   def invite
-    @invitation = User.find(params[:friend_id]).gamenight_invitations.create :gamenight_id => params[:gamenight_id], :user_inviting => current_user
+    @invitation = User.find(params[:friend_id]).gamenight_invitations.create :gamenight_id => params[:gamenight_id], :user_inviting_id => current_user.id
     @notification = Notification.make_notification(current_user, User.find(params[:friend_id]), @invitation, @invitation.notification_class)
     if @invitation.save & @notification.save!
       redirect_to :action => "invite_friends", :gamenight_id => params[:gamenight_id]
@@ -22,15 +22,15 @@ class GamenightInvitationsController < ApplicationController
   end
 
   def show
-    @invitation = current_user.gamenight_invitations.find_by_id :id
+    @invitation = current_user.gamenight_invitations.find_by_id params[:id]
     respond_to do |format|
       format.html
     end
   end
 
   def accept
-    @invitation = current_user.gamenight_invitations.find_by_id :id
-    @invitation.update_params :is_accepted => true
+    @invitation = current_user.gamenight_invitations.find_by_id params[:id]
+    @invitation.update_attributes :is_accepted => true
     redirect_to :controller => :gamenights, :action => :show, :id => @invitation.gamenight_id
   end
 end

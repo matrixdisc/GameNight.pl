@@ -13,6 +13,7 @@
 #
 
 class GamenightInvitation < ActiveRecord::Base
+  attr_accessible :user_id, :gamenight_id, :message, :is_accepted, :user_inviting_id
   belongs_to :user
   belongs_to :user_inviting, :class_name => "User", :foreign_key => "user_inviting_id"
   belongs_to :gamenight

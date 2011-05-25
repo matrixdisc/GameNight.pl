@@ -1,6 +1,8 @@
 GameNightPl::Application.routes.draw do
 
+  root :to => "dashboard#index"
   resources :users, :user_sessions, :friends, :invites, :gamenights, :gamenight_invitations, :games, :notifications
+
   match 'accept_invite' => 'invites#accept', :as => :accept_invite
   match 'send_invite' => 'friends#send_invite', :as => :send_invite
   match 'login' => 'user_sessions#new', :as => :login
@@ -10,6 +12,7 @@ GameNightPl::Application.routes.draw do
   match 'my_gamenights' => 'gamenights#index', :as => :my_gamenights
   match 'invite_friends' => 'gamenight_invitations#invite_friends'
   match 'invite' => 'gamenight_invitations#invite'
+  match 'gamenight_invitations/accept/:id' => 'gamenight_invitations#accept'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
