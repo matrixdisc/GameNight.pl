@@ -1,0 +1,8 @@
+<h1>Games known to Gamenight.pl</h1>
+<%= link_to 'New game', :controller => "gamenights", :action => "new"%>
+
+<ul>
+<% @games.each do |game| %>
+  <li><%= game.name %></li>
+<% end %>
+</ul>
