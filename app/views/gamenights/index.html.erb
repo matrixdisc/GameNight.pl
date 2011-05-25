@@ -4,6 +4,7 @@
   <tr>
     <th>Host</th>
     <th>Name</th>
+    <th>Game</th>
     <th>Location</th>
     <th>Start time</th>
     <th></th>
@@ -13,6 +14,7 @@
   <tr>
     <td><%= link_to gamenight.user.username, gamenight.user, :action => 'show', :controller => 'users' %></td>
     <td><%= gamenight.name %></td>
+    <td><%= gamenight.game.name if gamenight.game %></td>    
     <td><%= gamenight.location %></td>
     <td><%= gamenight.start_time %></td>
     <td><%= link_to 'show', gamenight %></td>
