@@ -1,4 +1,6 @@
 GameNightPl::Application.routes.draw do
+  root :to => "dashboard#index"
+
   resources :users, :user_sessions, :friends, :invites, :gamenights, :gamenight_invitations, :games
   match 'accept_invite' => 'invites#accept', :as => :accept_invite
   match 'send_invite' => 'friends#send_invite', :as => :send_invite

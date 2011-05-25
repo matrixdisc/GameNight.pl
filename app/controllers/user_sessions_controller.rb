@@ -1,4 +1,6 @@
 class UserSessionsController < ApplicationController
+  skip_before_filter :check_login, :except => [:destroy, :index]
+
   # GET /user_sessions/new
   # GET /user_sessions/new.xml
   def new
@@ -17,7 +19,11 @@ class UserSessionsController < ApplicationController
 
     respond_to do |format|
       if @user_session.save
-        format.html { redirect_to(:users, :notice => 'Login Successful.', @mood => :positive) }
+        format.html { 
+          redirect_target = session[:redirect_after_login] || :users
+          redirect_to(redirect_target, :notice => 'Login Successful.', @mood => :positive) 
+          session[:redirect_after_login] = nil
+        }
         format.xml  { render :xml => @user_session, :status => :created, :location => @user_session }
       else
         format.html { render :action => "new" }
