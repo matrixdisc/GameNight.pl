@@ -6,6 +6,13 @@
 </p>
 
 <p>
+  <b>Game:</b>
+  <%= if @gamenight.game then @gamenight.game.name else "unknown" end %>
+</p>
+
+
+
+<p>
   <b>Description:</b>
   <%= @gamenight.description %>
 </p>
