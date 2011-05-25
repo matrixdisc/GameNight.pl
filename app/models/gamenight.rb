@@ -23,5 +23,6 @@ class Gamenight < ActiveRecord::Base
 
   belongs_to :user, :foreign_key => 'host_id'
   def notification_class
-    Notifications::GamenightInvitation
+    Notifications::GameNightInvitation
+  end
 end
