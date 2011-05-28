@@ -4,16 +4,18 @@
     <th>From</th>
     <th>To</th>
     <th>Target</th>
-    <th></th>
+    <th>Date</th>
   </tr>
 <% @notifications.each do |notif| %>
   <tr>
     <td><%= link_to User.find(notif.user_id).username, User.find(notif.user_id) %></td>
     <td><%= notif.message(current_user) %></td>
     <% if notif.class.eql?(FriendInvitationNotification) and not notif.target.nil? %>
-    <td><%= link_to "#{notif.target.id}",accept_invite_path(:id => notif.target.id) %></td>
-    <% else %> <td/>
+        <td><%= link_to "#{notif.target.id}",accept_invite_path(:id => notif.target.id) %></td>
+    <% else %>
+        <td/>
     <% end %>
+    <%= distance_of_time_in_words(Time.now, notif.created_at)+ " ago" %>
     <td><%= link_to 'clear', notification_path(notif), :method => :delete %></td>
   </tr>
 <% end %>

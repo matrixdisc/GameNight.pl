@@ -1,4 +1,8 @@
 class NotificationsController < ApplicationController
+  require 'rubygems'
+  require 'action_view'
+  include ActionView::Helpers::DateHelper
+
   def show
   end
 
