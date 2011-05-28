@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110525172444) do
+ActiveRecord::Schema.define(:version => 20110526213317) do
 
   create_table "gamenight_invitations", :force => true do |t|
     t.integer  "user_id",          :null => false
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(:version => 20110525172444) do
 
   create_table "gamenights", :force => true do |t|
     t.integer  "host_id",       :null => false
-    t.string   "name"
+    t.string   "name",          :null => false
     t.string   "description"
     t.string   "location"
     t.datetime "start_time"
@@ -43,15 +43,6 @@ ActiveRecord::Schema.define(:version => 20110525172444) do
     t.datetime "updated_at"
   end
 
-  create_table "invitations", :force => true do |t|
-    t.integer  "user_id",        :null => false
-    t.integer  "user_id_target", :null => false
-    t.string   "code"
-    t.text     "message"
-    t.boolean  "is_accepted"
-    t.datetime "accepted_at"
-  end
-
   create_table "invites", :force => true do |t|
     t.integer  "user_id",        :null => false
     t.integer  "user_id_target", :null => false
@@ -60,6 +51,20 @@ ActiveRecord::Schema.define(:version => 20110525172444) do
     t.boolean  "is_accepted"
     t.datetime "accepted_at"
   end
+
+  create_table "notifications", :force => true do |t|
+    t.string   "target_type"
+    t.integer  "target_id"
+    t.integer  "recipient_id"
+    t.string   "notifications"
+    t.boolean  "unread",        :default => true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.string   "type"
+  end
+
+  add_index "notifications", ["target_type", "target_id"], :name => "index_notifications_on_target_type_and_target_id"
 
   create_table "users", :force => true do |t|
     t.string   "username"
@@ -73,5 +78,8 @@ ActiveRecord::Schema.define(:version => 20110525172444) do
     t.string   "last_name"
     t.string   "location"
   end
+
+  add_index "users", ["email"], :name => "index_users_on_email"
+  add_index "users", ["username"], :name => "index_users_on_username"
 
 end
