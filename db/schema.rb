@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110525202020) do
+ActiveRecord::Schema.define(:version => 20110526213317) do
 
   create_table "gamenight_invitations", :force => true do |t|
     t.integer  "user_id",          :null => false
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20110525202020) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "type"
   end
 
   add_index "notifications", ["target_type", "target_id"], :name => "index_notifications_on_target_type_and_target_id"

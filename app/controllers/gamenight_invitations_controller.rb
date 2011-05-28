@@ -13,8 +13,9 @@ class GamenightInvitationsController < ApplicationController
 
   def invite
     @invitation = User.find(params[:friend_id]).gamenight_invitations.create :gamenight_id => params[:gamenight_id], :user_inviting_id => current_user.id
-    @notification = Notification.make_notification(current_user, User.find(params[:friend_id]), @invitation, @invitation.notification_class)
-    if @invitation.save & @notification.save!
+    @notification = Notification.make_notification(current_user, User.find(params[:friend_id]), @invitation, GamenightInvitationNotification)
+    @notification.save!
+    if @invitation.save
       redirect_to :action => "invite_friends", :gamenight_id => params[:gamenight_id]
     else
       redirect_to :friends

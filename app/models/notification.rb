@@ -24,16 +24,14 @@ class Notification < ActiveRecord::Base
   end
 
 
-  def self.make_notification(user, recipient, target, notification_type)
-    n = notification_type.new(:user => user,
+  def self.make_notification(user, recipient, target, notif_class)
+   n = notif_class.new(:user => user,
                               :target => target,
                                :recipient_id => recipient.id,
                                :unread => true)
-    n.save!
-    n
+   n
   end
-end
-
-class GameNightInvitationNotification < Notification
-
+  def message(current_user)
+    "default message"
+  end
 end

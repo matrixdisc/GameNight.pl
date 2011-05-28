@@ -8,12 +8,13 @@
   </tr>
 <% @notifications.each do |notif| %>
   <tr>
-    <td><%= notif.user.username %></td>
-    <td><%= notif.recipient.username %></td>
-    <td><%= notif.target.class %></td>
-
-    <td><%= link_to 'show', notif %></td>
-    <td><%= link_to 'destroy', notif, :method => :delete %></td>
+    <td><%= link_to User.find(notif.user_id).username, User.find(notif.user_id) %></td>
+    <td><%= notif.message(current_user) %></td>
+    <% if notif.class.eql?(FriendInvitationNotification) and not notif.target.nil? %>
+    <td><%= link_to "#{notif.target.id}",accept_invite_path(:id => notif.target.id) %></td>
+    <% else %> <td/>
+    <% end %>
+    <td><%= link_to 'clear', notification_path(notif), :method => :delete %></td>
   </tr>
 <% end %>
 </table>
