@@ -1,0 +1,24 @@
+<h1>Notifications</h1>
+<table>
+  <tr>
+    <th>From</th>
+    <th>To</th>
+    <th>Target</th>
+    <th>Date</th>
+  </tr>
+<% @notifications.each do |notification| %>
+  <tr>
+    <td><%= link_to User.find(notification.user_id).username, User.find(notification.user_id) %></td>
+    <td><%= notification.message(current_user) %></td>
+    <% if notification.class.eql?(FriendInvitationNotification) and not notification.target.nil? %>
+        <td><%= link_to "#{notification.target.id}",accept_invite_path(:id => notification.target.id) %></td>
+    <% else %>
+        <td/>
+    <% end %>
+    <%= distance_of_time_in_words(Time.now, notification.created_at)+ " ago" %>
+    <td><%= link_to 'clear', notification_path(notification), :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
