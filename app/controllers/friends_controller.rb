@@ -6,8 +6,8 @@ class FriendsController < ApplicationController
 
       invite = Invite.create(:user => current_user, :user_target => @user, :message => "I wanna be your friend", :is_accepted => false)
 
-      notif = Notification.create(current_user, @user, invite, FriendInvitationNotification)
-      notif.save!
+      notification = Notification.create(current_user, @user, invite, FriendInvitationNotification)
+      notification.save!
       redirect_to(:back, :notice => "Invitation sent.")
     else
       mood = :negative
