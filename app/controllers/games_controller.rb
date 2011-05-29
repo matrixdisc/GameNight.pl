@@ -2,11 +2,12 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.xml
   def index
-    @games = Game.all
+    @games = Game.where("name like ?", "%#{params[:q]}%") 
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @games }
+      format.json { render :json => @games.map(&:attributes) }
     end
   end
 
@@ -55,7 +56,7 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.update_attributes(params[:game])
-        format.html { redirect_to(@game, :notice => 'Game was successfully updated.') }
+        format.html { redirect_to(:games, :notice => 'Game was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
