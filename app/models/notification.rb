@@ -1,5 +1,5 @@
 class Notification < ActiveRecord::Base
-  belongs_to :user, :class_name => 'User'
+  belongs_to :user
   belongs_to :recipient, :class_name => 'User'
 
   validates_presence_of :user
@@ -24,7 +24,7 @@ class Notification < ActiveRecord::Base
   end
 
 
-  def self.make_notification(user, recipient, target, notif_class)
+  def self.create(user, recipient, target, notif_class)
    n = notif_class.new(:user => user,
                               :target => target,
                                :recipient_id => recipient.id,

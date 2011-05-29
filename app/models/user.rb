@@ -20,8 +20,8 @@ class User < ActiveRecord::Base
   acts_as_authentic
   acts_as_network :friends, :through => :invites, :conditions => "is_accepted = 't'"
 
-  validates_format_of :username, :with => /\A[A-Za-z0-9_]+\z/
-  validates_length_of :username, :maximum => 32
+  validates :username, :format => { :with => /\A[A-Za-z0-9_]+\z/ }
+  validates :username, :length => {:maximum => 32}
   has_many :gamenight_invitations
   has_many :gamenights, :through => :gamenight_invitations
 

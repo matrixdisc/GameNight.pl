@@ -6,7 +6,7 @@ class FriendsController < ApplicationController
 
       invite = Invite.create(:user => current_user, :user_target => @user, :message => "I wanna be your friend", :is_accepted => false)
 
-      notif = Notification.make_notification(current_user, @user, invite, FriendInvitationNotification)
+      notif = Notification.create(current_user, @user, invite, FriendInvitationNotification)
       notif.save!
       redirect_to(:back, :notice => "Invitation sent.")
     else
@@ -22,8 +22,8 @@ class FriendsController < ApplicationController
     Invite.delete(myinv)
     Invite.delete(targetinv)
     user.reload and current_user.reload
-    notif = Notification.make_notification(current_user, user, current_user, FriendshipEndNotification)
-    notif.save!
+    notification = Notification.create(current_user, user, current_user, FriendshipEndingNotification)
+    notification.save!
     redirect_to(user, :notice => "Friendship ended succesfully.", :mood => :neutral)
   end
 

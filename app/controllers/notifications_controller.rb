@@ -3,14 +3,11 @@ class NotificationsController < ApplicationController
   require 'action_view'
   include ActionView::Helpers::DateHelper
 
-  def show
-  end
-
   def index
     @notifications = GamenightInvitationNotification.all +
         FriendInvitationNotification.all +
-        FriendshipEndNotification.all +
-        FriendshipAcceptNotification.all
+        FriendshipEndingNotification.all +
+        FriendshipAcceptationNotification.all
   end
 
   def destroy

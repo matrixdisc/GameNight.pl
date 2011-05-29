@@ -1,4 +1,4 @@
-<h1>Listing gamenights</h1>
+<h1>Notifications</h1>
 <table>
   <tr>
     <th>From</th>
@@ -6,17 +6,17 @@
     <th>Target</th>
     <th>Date</th>
   </tr>
-<% @notifications.each do |notif| %>
+<% @notifications.each do |notification| %>
   <tr>
-    <td><%= link_to User.find(notif.user_id).username, User.find(notif.user_id) %></td>
-    <td><%= notif.message(current_user) %></td>
-    <% if notif.class.eql?(FriendInvitationNotification) and not notif.target.nil? %>
-        <td><%= link_to "#{notif.target.id}",accept_invite_path(:id => notif.target.id) %></td>
+    <td><%= link_to User.find(notification.user_id).username, User.find(notification.user_id) %></td>
+    <td><%= notification.message(current_user) %></td>
+    <% if notification.class.eql?(FriendInvitationNotification) and not notification.target.nil? %>
+        <td><%= link_to "#{notification.target.id}",accept_invite_path(:id => notification.target.id) %></td>
     <% else %>
         <td/>
     <% end %>
-    <%= distance_of_time_in_words(Time.now, notif.created_at)+ " ago" %>
-    <td><%= link_to 'clear', notification_path(notif), :method => :delete %></td>
+    <%= distance_of_time_in_words(Time.now, notification.created_at)+ " ago" %>
+    <td><%= link_to 'clear', notification_path(notification), :method => :delete %></td>
   </tr>
 <% end %>
 </table>

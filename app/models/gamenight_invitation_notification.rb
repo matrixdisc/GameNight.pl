@@ -1,5 +1,5 @@
 class GamenightInvitationNotification < Notification
   def message(current_user)
-    return recipient.username+" invites you to join his gamenight "
+    return "#{user.username} invites you to join his gamenight "
   end
 end
