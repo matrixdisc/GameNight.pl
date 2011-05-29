@@ -5,6 +5,17 @@
   <h2 class="user_name"><%= @user.username %></h2>
   <div class="clear_fix"></div>
 </div>
+
+<section class="favorite_games profile_box">
+  <h1>Favorite games</h1>
+  <ul class="games_list">
+    <% @user.games.each do |game| %>
+      <li><%= image_tag game.cover.thumb.url if game.cover.thumb.url %></li>
+    <% end %>
+  </ul>
+  <div class="clear_fix"></div>
+</section>
+<div class="clear_fix"></div>
 <% if current_user.friends.include?(@user) %>
     <p><strong>Friend</strong></p>
 <% end %>

@@ -20,8 +20,9 @@
                       <li><%= link_to "Your friends", :friends %></li>
                       <li><%= link_to "Friend requests", :invites %></li>
                       <li><%= link_to "Browse users", users_path %></li>
-					  <li><%= link_to "Your gamenights", :my_gamenights %></li>
+		      <li><%= link_to "Your gamenights", :my_gamenights %></li>
                       <li><%= link_to "Gamenight invitations", :gamenight_invitations %></li>
+                      <li><%= link_to "Games", :games %></li>
                       <li><%= link_to "Logout", :logout%></li>
                     <% else %>
                       <li><%= link_to "Register", new_user_path%></li>
@@ -29,7 +30,6 @@
                     <% end %>
                 </ul>
             </div>
-			<p> <%= params[:kupa]%></p>
             <% if not(notice.nil?) %>
 				<%case params[:mood] 
 					when :negative then %>

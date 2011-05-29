@@ -12,11 +12,9 @@
       <%= f.input :first_name %>
       <%= f.input :last_name %>
       <%= f.input :location %>
+      <%= f.input :games_tokens, :label => "Favorite games", :input_html => { "data-pre" => @user.games.map(&:attributes).to_json } %>
   <% end %>
-  <%= f.inputs :title => "My games" do %>
-    <%= f.input :games_tokens, :label => "Favorite games", :input_html => { "data-pre" => @user.games.map(&:attributes).to_json } %>
-  <% end %>
-  
+
   <%= f.buttons %>
 <% end %>
 
@@ -25,7 +23,7 @@
 
 
 <script type="text/javascript">
-  $(function () {  
+  $(function () {
     $('#user_games_tokens').tokenInput('/games.json', { crossDomain: false, theme: 'facebook' });
   });
 </script>

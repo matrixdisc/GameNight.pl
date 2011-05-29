@@ -56,7 +56,7 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.update_attributes(params[:game])
-        format.html { redirect_to(@game, :notice => 'Game was successfully updated.') }
+        format.html { redirect_to(:games, :notice => 'Game was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
