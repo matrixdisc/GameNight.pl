@@ -31,7 +31,13 @@ class GamenightInvitationsController < ApplicationController
 
   def accept
     @invitation = current_user.gamenight_invitations.find_by_id params[:id]
-    @invitation.update_attributes :is_accepted => true
+    @invitation.update_attributes :is_accepted => true, :is_replied => true
     redirect_to :controller => :gamenights, :action => :show, :id => @invitation.gamenight_id
+  end
+
+  def reject
+    @invitation = current_user.gamenight_invitations.find_by_id params[:id]
+    @invitation.update_attributes :is_accepted => false, :is_replied => true
+    redirect_to :controller => :gamenight_invitations, :action => :index
   end
 end

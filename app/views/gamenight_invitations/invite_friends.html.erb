@@ -7,8 +7,12 @@
         <span class="user_avatar"><%= image_tag friend.gravatar_url %></span>
         <span class="user_name"><%= friend.username %></span>
         <% end %>
-        <% if friend.gamenight_invitations.find_by_gamenight_id(@gamenight.id) %>
-            <%= "Invited" %>
+        <% if @invitation = friend.gamenight_invitations.find_by_gamenight_id(@gamenight.id) %>
+            <% if @invitation.is_replied? %>
+                <%= @invitation.is_accepted? %>
+            <% else %>
+                <%= "Invited" %>
+            <% end %>
         <% else %>
             <span class="invite"><%= link_to 'invite', :controller => "gamenight_invitations", :action => "invite", :gamenight_id => params[:gamenight_id], :friend_id => friend.id %></span>
         <% end %>

@@ -13,6 +13,7 @@ GameNightPl::Application.routes.draw do
   match 'invite_friends' => 'gamenight_invitations#invite_friends'
   match 'invite' => 'gamenight_invitations#invite'
   match 'gamenight_invitations/accept/:id' => 'gamenight_invitations#accept'
+  match 'gamenight_invitations/reject/:id' => 'gamenight_invitations#reject'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -4,9 +4,10 @@
   <tr>
     <td>ID: <%= invitation.id %></td>
     <td>Gamenight: <%= link_to invitation.gamenight.name, :controller => :gamenights, :action => :show, :id => invitation.gamenight.id %></td>
-    <td>From: <%= link_to invitation.user_inviting.username %></td>
+    <td>From: <%= link_to invitation.user_inviting.username , :controller => :users, :action => :show, :id => invitation.user_inviting.id %></td>
     <td>Host: <%= link_to invitation.gamenight.user.username, :controller => :users, :action => :show, :id => invitation.gamenight.host_id %></td>
     <td><%= link_to "show", :controller => :gamenight_invitations, :action => :show, :id => invitation.id %></td>
+    <td>Replied? <%= invitation.is_replied? %> </td>
     <td>Accepted? <%= invitation.is_accepted? %></td>
   </tr>
 </table>

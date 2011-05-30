@@ -1,11 +1,11 @@
 # == Schema Information
-# Schema version: 20110503230850
+# Schema version: 20110525172444
 #
 # Table name: gamenights
 #
 #  id            :integer         not null, primary key
-#  host_id       :integer
-#  name          :string(255)
+#  host_id       :integer         not null
+#  name          :string(255)     not null
 #  description   :string(255)
 #  location      :string(255)
 #  start_time    :datetime
@@ -13,6 +13,7 @@
 #  players_slots :integer
 #  created_at    :datetime
 #  updated_at    :datetime
+#  game_id       :integer
 #
 
 class Gamenight < ActiveRecord::Base

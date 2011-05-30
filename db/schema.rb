@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20110526213317) do
     t.integer  "gamenight_id",     :null => false
     t.string   "code"
     t.text     "message"
+    t.boolean  "is_replied"
     t.boolean  "is_accepted"
     t.datetime "accepted_at"
   end
