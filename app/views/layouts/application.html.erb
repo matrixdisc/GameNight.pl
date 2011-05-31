@@ -10,7 +10,7 @@
         <div id="container">
             <div id="header">
                 <ul id="logo">
-                  <li><img src="/images/logo1.png"/></li>
+                    <%= link_to image_tag("/images/logo1.png"), root_path %>
                 </ul>
                 <ul id="nav">
                     <% if current_user %>
@@ -20,7 +20,7 @@
                       <li><%= link_to "Your friends", :friends %></li>
                       <li><%= link_to "Friend requests", :invites %></li>
                       <li><%= link_to "Browse users", users_path %></li>
-		      <li><%= link_to "Your gamenights", :my_gamenights %></li>
+		              <li><%= link_to "Your gamenights", :my_gamenights %></li>
                       <li><%= link_to "Gamenight invitations", :gamenight_invitations %></li>
                       <li><%= link_to "Games", :games %></li>
                       <li><%= link_to "Logout", :logout%></li>
@@ -45,7 +45,7 @@
 			<div id="content">
                 <%= yield %>
             </div>
-      </div>
+        </div>
       <script type="text/javascript">
         $(".datetime").datetimepicker({dateFormat: "yy/mm/dd"});
       </script>

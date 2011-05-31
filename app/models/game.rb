@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110525172444
+# Schema version: 20110529183130
 #
 # Table name: games
 #
@@ -7,6 +7,7 @@
 #  name       :string(255)
 #  created_at :datetime
 #  updated_at :datetime
+#  cover      :string(255)
 #
 
 class Game < ActiveRecord::Base

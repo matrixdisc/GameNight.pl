@@ -1,2 +1,9 @@
-<h1>Dashboard#index</h1>
-<p>Find me in app/views/dashboard/index.html.erb</p>
+<%= button_to "New Gamenight", :new_gamenight %>
+<div class="gamenights_widget">
+    <%= render :partial => "gamenights/widget"%>
+</div>
+
+<div class="notifications_widget">
+
+</div>
+<div class="clear"></div>

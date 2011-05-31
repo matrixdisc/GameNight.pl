@@ -6,7 +6,6 @@ class CreateGamenightInvitations < ActiveRecord::Migration
       t.column :gamenight_id, :integer, :null => false
       t.column :code, :string
       t.column :message, :text
-      t.column :is_replied, :boolean
       t.column :is_accepted, :boolean
       t.column :accepted_at, :timestamp
     end

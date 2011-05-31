@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110525172444
+# Schema version: 20110529183130
 #
 # Table name: gamenight_invitations
 #
@@ -9,7 +9,6 @@
 #  gamenight_id     :integer         not null
 #  code             :string(255)
 #  message          :text
-#  is_replied       :boolean
 #  is_accepted      :boolean
 #  accepted_at      :datetime
 #

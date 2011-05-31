@@ -49,7 +49,7 @@ body {
     margin: 50px auto 100px;
     padding: 40px;
     position: relative;
-    width: 850px;
+    width: 1000px;
 }
 
 a {
@@ -146,4 +146,51 @@ a {
 
 ul.token-input-list-facebook { 
   clear: none !important;
+}
+
+.gamenights_widget{
+    width: 480px;
+    border: 1px solid black;
+    padding : 5px;
+    float:left;
+}
+
+.gamenight_tile_head{
+    width:468px;
+    padding: 5px;
+    border: 1px solid black;
+}
+
+.gamenight_tile{
+    border: 1px #a52a2a solid;
+}
+
+.gamenight_avatar{
+    float: left;
+}
+.gamenight_name{
+    float: left;
+    font-family: 'Droid Sans', Arial;
+    font-size: 20px;
+    margin-left: 5px;
+}
+.gamenight_description{
+    margin-left: 5px;
+    float: left;
+}
+
+.gamenight_tile_body{
+    height:500px;
+}
+
+.notifications_widget{
+    margin-left:30px;
+    width: 400px;
+    height: 600px;
+    border: 1px black solid;
+    float:left;
+}
+
+.clear{
+    clear: both;
 }

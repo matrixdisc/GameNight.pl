@@ -9,7 +9,7 @@
     <th>Start time</th>
     <th></th>
   </tr>
-  <%= link_to 'new', :controller => "gamenights", :action => "new"%>
+  <%= link_to 'new', :new_gamenight%>
 <% @gamenights.each do |gamenight| %>
   <tr>
     <td><%= link_to gamenight.user.username, gamenight.user, :action => 'show', :controller => 'users' %></td>

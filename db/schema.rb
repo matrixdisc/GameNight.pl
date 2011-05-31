@@ -10,8 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
-ActiveRecord::Schema.define(:version => 20110529183130) do
+ActiveRecord::Schema.define(:version => 20110531152027) do
 
   create_table "gamenight_invitations", :force => true do |t|
     t.integer  "user_id",          :null => false
@@ -19,9 +18,9 @@ ActiveRecord::Schema.define(:version => 20110529183130) do
     t.integer  "gamenight_id",     :null => false
     t.string   "code"
     t.text     "message"
-    t.boolean  "is_replied"
     t.boolean  "is_accepted"
     t.datetime "accepted_at"
+    t.boolean  "is_replied"
   end
 
   create_table "gamenights", :force => true do |t|

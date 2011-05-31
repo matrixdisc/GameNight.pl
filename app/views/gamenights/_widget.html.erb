@@ -1,0 +1,11 @@
+<div class="gamenight_tile">
+  <div class="gamenight_tile_head">
+    <div class="gamenight_avatar"><%= image_tag Game.first.cover.thumb.url if Game.first.cover.thumb.url %></div>
+    <div class="gamenight_name"><%= @gamenights.first.name %></div>
+    <div class="gamenight_description"><%= @gamenights.first.description %></div>
+    <div class="clear"></div>
+  </div>
+  <div class="gamenight_tile_body">
+
+  </div>
+</div>
