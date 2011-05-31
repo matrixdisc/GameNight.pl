@@ -21,7 +21,9 @@ class UserSessionsController < ApplicationController
       if @user_session.save
         format.html { 
           redirect_target = session[:redirect_after_login] || :users
-          redirect_to(redirect_target, :notice => 'Login Successful.', @mood => :positive) 
+
+          flash[:mood] = "positive"
+          redirect_to(redirect_target, :notice => 'Login Successful.', session[:mood] => :positive)
           session[:redirect_after_login] = nil
         }
         format.xml  { render :xml => @user_session, :status => :created, :location => @user_session }
@@ -39,6 +41,8 @@ class UserSessionsController < ApplicationController
     @user_session.destroy
 
     respond_to do |format|
+
+      flash[:mood] = "neutral"
       format.html { redirect_to(:users, :notice => 'Logged Out.', @mood => :positive) }
       format.xml  { head :ok }
     end
