@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   validates :username, :length => {:maximum => 32}
   has_many :gamenight_invitations
   has_many :gamenights, :through => :gamenight_invitations
+  has_and_belongs_to_many :games
 
   include Gravtastic
   gravtastic :default => "monsterid"
@@ -32,4 +33,12 @@ class User < ActiveRecord::Base
       return "#{first_name} #{last_name}" if !first_name.blank? && !last_name.blank?
       return username
   end
+  
+  def games_tokens
+    self.game_ids.join(',')
+  end
+  
+  def games_tokens=(ids)
+    self.game_ids = ids.split(',')
+  end 
 end

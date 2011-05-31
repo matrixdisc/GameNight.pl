@@ -10,6 +10,9 @@ gem 'authlogic'
 gem 'formtastic'
 gem 'gravtastic'
 gem 'jquery-rails'
+gem 'carrierwave'
+gem 'fog'
+gem 'rmagick'
 group :development do
 	gem 'annotate-models'
 end

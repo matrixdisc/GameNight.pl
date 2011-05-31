@@ -40,7 +40,6 @@ body {
     margin: 0 20px 0 20px;
     position: relative;
     /*width: 930px;*/
-    z-index: 10;
 }
 
 #content {
@@ -51,7 +50,6 @@ body {
     padding: 40px;
     position: relative;
     width: 850px;
-    z-index: 10;
 }
 
 a {
@@ -118,4 +116,34 @@ a {
     font-weight: normal;
     margin: 0 0 10px 0;
     padding: 0;
+}
+
+
+.profile_box {
+  padding: 10px;
+  width: 300px;
+  float: left;
+}
+
+#content .profile_box h1 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.games_list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.games_list li {
+  float: left;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+
+ul.token-input-list-facebook { 
+  clear: none !important;
 }

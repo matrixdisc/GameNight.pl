@@ -3,6 +3,9 @@
 
 <ul>
 <% @games.each do |game| %>
-  <li><%= game.name %></li>
+  <li>
+    <%= image_tag game.cover.thumb.url if game.cover.thumb.url %>
+    <%= link_to game.name, edit_game_path(game) %>
+  </li>
 <% end %>
 </ul>
