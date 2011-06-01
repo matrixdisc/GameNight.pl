@@ -4,7 +4,7 @@
 
 .notice{
 	position: relative;
-	font-size: 20px;
+	font-size: 16px;
 	font-family: 'Droid Sans', Arial;
 	margin: 0 auto;
 	width: 500px;
@@ -13,14 +13,14 @@
 	border-color: black;
 	background-color: white;
 	box-shadow: 0 0 15px #A6A6A6;
-	padding: 40px;
+	padding: 10px;
 }
 
 .negative{
-	color: #B92734;
+	background-color: #B92734;
 }
 .positive{
-	color: #03FD7C;
+	background-color: #ccffcc;
 }
 
 body {
@@ -29,6 +29,38 @@ body {
     font: 13px arial, verdana, arial, helvetica, sans-serif;
     margin: 0;
     padding: 0;
+}
+
+
+td.user_avatar {
+        float: left;
+    border-top: 1px solid #E8E8E8;
+       padding: 3px 10px;
+    text-align: center
+}
+
+td.target_link {
+    border-top: 1px solid #E8E8E8;
+       padding: 0px 6px;
+}
+td.message {
+    border-top: 1px solid #E8E8E8;
+       padding: 0px 6px;
+}
+td.actions {
+    border-top: 1px solid #E8E8E8;
+       padding: 0px 6px;
+}
+
+
+
+table#notifications{
+    border-spacing: 0;
+    clear: left;
+    font-size: 11px;
+    line-height: 1.18182em;
+    margin: 30px 0;
+    width: 400px;
 }
 
 #container {
@@ -46,7 +78,7 @@ body {
     background: none repeat scroll 0 0 #FFFFFF;
     border-radius: 4px 4px 4px 4px;
     box-shadow: 0 0 6px #C6C6C6;
-    margin: 50px auto 100px;
+    margin: 26px auto 100px;
     padding: 40px;
     position: relative;
     width: 1000px;
@@ -75,7 +107,6 @@ a {
     position: absolute;
     right: 0;
     top: 30px;
-    z-index: 99;
 }
 #nav li, #countdown li {
     position: relative;
@@ -83,7 +114,6 @@ a {
     margin: 0 0 0 8px;
     padding: 0;
     float: left;
-    background: transparent url(../img/nav-button-left-sprite.png) no-repeat top left;
 }
 
 #content h1 {

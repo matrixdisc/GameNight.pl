@@ -31,3 +31,10 @@ if @gamenight.save
 else
   puts "gamenight not saved"
 end
+
+@notification = GamenightInvitationNotification.create(:user => @matrix, :recipient => @marcel, :target => @gamenight)
+if @notification.save!
+  puts "notification saved"
+else
+  puts "notification not saved"
+end
