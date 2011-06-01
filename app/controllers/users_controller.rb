@@ -40,7 +40,6 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         flash[:mood] = "positive"
-
         format.html { redirect_to(:users, :notice => 'Registration successful.') }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else

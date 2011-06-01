@@ -16,7 +16,7 @@
                     <% if current_user %>
                       <li>Hello, <strong><%= current_user.first_name || current_user.username %></strong>!</li>
 
-                      <li><%= link_to "Notifications "+Notification.where("unread = ?", true).find_all_by_recipient_id(current_user.id).length.to_s, :notifications %></li>
+                      <li><%= link_to "Notifications ("+Notification.where("unread = ?", true).find_all_by_recipient_id(current_user.id).length.to_s + ")", :notifications %></li>
 
                       <li><%= link_to "Edit Profile", edit_user_path(current_user.id) %></li>
                       <li><%= link_to "Your friends", :friends %></li>
