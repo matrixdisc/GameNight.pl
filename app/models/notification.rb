@@ -27,6 +27,11 @@ class Notification < ActiveRecord::Base
       # nothing here to see, move along.
   end
 
+  def target_link_name
+    target.name if target.respond_to?(:name)
+    target.username if target.respond_to?(:username)
+    "Go to target"
+  end
 
   def message(current_user)
     "default message"
