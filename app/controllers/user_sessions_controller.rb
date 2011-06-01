@@ -20,7 +20,7 @@ class UserSessionsController < ApplicationController
     respond_to do |format|
       if @user_session.save
         format.html { 
-          redirect_target = session[:redirect_after_login] || :users
+          redirect_target = session[:redirect_after_login] || root_path
           flash[:mood] = "positive"
           redirect_to(redirect_target, :notice => 'Login Successful.', session[:mood] => :positive)
           session[:redirect_after_login] = nil
