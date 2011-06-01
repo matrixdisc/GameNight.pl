@@ -3,17 +3,16 @@
 }
 
 .notice{
-	position: relative;
-	font-size: 16px;
-	font-family: 'Droid Sans', Arial;
-	margin: 0 auto;
-	width: 500px;
-	border-style: solid;
-	border-width: 1px;
-	border-color: black;
-	background-color: white;
-	box-shadow: 0 0 15px #A6A6A6;
-	padding: 10px;
+    background-color: white;
+    border: 1px solid black;
+    box-shadow: 0 0 15px #A6A6A6;
+    font-family: 'Droid Sans',Arial;
+    font-size: 16px;
+    height: 18px;
+    margin: 0 auto 53px;
+    padding: 10px;
+    position: relative;
+    width: 500px;
 }
 
 .negative{
@@ -59,7 +58,6 @@ table#notifications{
     clear: left;
     font-size: 11px;
     line-height: 1.18182em;
-    margin: 30px 0;
     width: 400px;
 }
 
@@ -79,7 +77,7 @@ table#notifications{
     border-radius: 4px 4px 4px 4px;
     box-shadow: 0 0 6px #C6C6C6;
     margin: -31px auto 10px;
-    padding: 32px 15px 0;
+    padding: 22px 15px;
     position: relative;
     width: 1000px;
 }
@@ -265,7 +263,7 @@ ul.token-input-list-facebook {
     -moz-border-radius: 10px;
     border-radius: 10px;
 
-    margin: 0 0 17px 11px;
+    margin: 0 0 0 30px;
     padding: 20px;
     position: relative;
     text-align: left;
@@ -278,9 +276,6 @@ ul.token-input-list-facebook {
     -moz-transition: background 200ms linear;
     transition: background 200ms linear;
 
-
-
-    margin-left:30px;
     width: 400px;
     height: 500px;
     float:left;

@@ -1,9 +1,6 @@
 <table id="notifications">
     <% @notifications.each do |notification| %>
         <% user = User.find(notification.user_id) %>
-        <% target_link_name = "Go to "+notification.target.class.name.downcase! %>
-        <% target_link_name = notification.target.username if notification.target.respond_to?(:username) %>
-        <% target_link_name = notification.target.name if notification.target.respond_to?(:name) %>
       <tr class="notification">
         <td  class="user_avatar">
           <%= link_to user do %>
@@ -22,7 +19,7 @@
           <br/>
           <%= distance_of_time_in_words(Time.now, notification.created_at)+ " ago" %>
         </td>
-        <td class="target_link"><%= (link_to "#{target_link_name}",notification.target) if not (notification.target.eql?(notification.user))%></td>
+        <td class="target_link"><%= (link_to "#{notification.target_link_name}",notification.target) if not (notification.target.eql?(notification.user) or notification.target.nil?)%></td>
         <td class="actions"><%= link_to image_tag("icon_delete.png"), notification_path(notification), :method => :delete %></td>
       </tr>
     <% end %>

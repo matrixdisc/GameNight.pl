@@ -17,6 +17,9 @@
 
 class GamenightInvitationNotification < Notification
   def message(current_user)
-    return "#{user.username} invites you to join his gamenight "
+    return "#{user.username} invites you to join his gamenight"+(target.gamenight.nil? ? ", but it was since deleted." : ".")
+  end
+  def target_link_name
+    target.gamenight.nil? ? "" : "Gamenight #{target.gamenight.name}"
   end
 end
