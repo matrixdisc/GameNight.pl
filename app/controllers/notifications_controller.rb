@@ -4,11 +4,11 @@ class NotificationsController < ApplicationController
   include ActionView::Helpers::DateHelper
 
   def index
-    @notifications = Notification.order("created_at desc").find_all_by_recipient_id(current_user.id)
+    @notifications = Notification.find_all_by_recipient_id(current_user.id).order("created_at desc").
     respond_to do |format|
       format.html
     end
-    Notification.find_all_by_recipient_id(current_user.id).each do |n|
+    @notifications.each do |n|
       n.unread = false
       n.save!
     end
