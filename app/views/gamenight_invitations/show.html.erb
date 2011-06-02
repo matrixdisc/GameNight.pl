@@ -1,5 +1,5 @@
 <div class="gamenight_invitation">
-    <%= link_to @invitation.user_inviting.username, :controller => :users, :action => :show, :id => @invitation.user_inviting_id %> "invited you to play in a gamenight. Do you wish to participate?"
+    <%= link_to @invitation.user_inviting.username, :controller => :users, :action => :show, :id => @invitation.user_inviting_id %> invited you to play in a gamenight. Do you wish to participate?
     <%=	link_to "Yes!", :controller => :gamenight_invitations, :action => :accept, :id => @invitation.id %>
     <%=	link_to "No!", :controller => :gamenight_invitations, :action => :reject, :id => @invitation.id %>
 </div>

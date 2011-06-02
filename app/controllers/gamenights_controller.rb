@@ -30,6 +30,9 @@ class GamenightsController < ApplicationController
   def create
     @gamenight = current_user.gamenights.build(params[:gamenight])
     @gamenight.user = current_user
+    current_user.friends.each do |friend|
+      GamenightCreationNotification.create(:user => current_user, :target => @gamenight, :recipient => friend)
+    end
     if @gamenight.save
       flash[:success] = "New gamenight created"
       redirect_to :controller => 'gamenight_invitations', :action => 'invite_friends', :gamenight_id => @gamenight.id

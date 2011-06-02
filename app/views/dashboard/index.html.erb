@@ -1,9 +1,8 @@
-<%= button_to "New Gamenight", :new_gamenight %>
 <div class="gamenights_widget">
+  <div class="new_gamenight_button"> <%= link_to "Create a new Gamenight", :new_gamenight %></div>
     <%= render :partial => "gamenights/widget"%>
 </div>
-
 <div class="notifications_widget">
-
+    <%= render :partial => "notifications/my_notifications"%>
 </div>
 <div class="clear"></div>
