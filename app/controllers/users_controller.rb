@@ -39,6 +39,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        flash[:mood] = "positive"
         format.html { redirect_to(:users, :notice => 'Registration successful.') }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
@@ -55,6 +56,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
+        flash[:mood] = "positive"
         format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
         format.xml  { head :ok }
       else

@@ -1,0 +1,28 @@
+<table id="notifications">
+    <% @notifications.each do |notification| %>
+        <% user = User.find(notification.user_id) %>
+      <tr class="notification">
+        <td  class="user_avatar">
+          <%= link_to user do %>
+            <%= image_tag user.gravatar_url(:size => 50) %>
+              <%= user.username %>
+          <% end %>
+        </td>
+        <td class="message">
+          <% if notification.unread %>
+            <strong>
+          <% end %>
+          <%= notification.message(current_user) %>
+          <% if notification.unread %>
+          </strong>
+          <% end %>
+          <br/>
+          <%= distance_of_time_in_words(Time.now, notification.created_at)+ " ago" %>
+        </td>
+        <td class="target_link"><%= (link_to "#{notification.target_link_name}",notification.target) if not (notification.target.eql?(notification.user) or notification.target.nil?)%></td>
+        <td class="actions"><%= link_to image_tag("icon_delete.png"), notification_path(notification), :method => :delete %></td>
+      </tr>
+    <% end %>
+
+
+</table>

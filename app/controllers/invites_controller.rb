@@ -15,9 +15,9 @@ class InvitesController < ApplicationController
     else
        name = invite.user_target.first_name
     end
-    notification = Notification.create(current_user, invite.user_target, current_user, FriendshipAcceptationNotification)
-    notification.save!
-    redirect_to(:friends, :notice => "#{name} is now your friend!", :mood => :positive)
+    FriendshipAcceptationNotification.create(:user => current_user, :recipient => invite.user, :target => current_user)
+    flash[:mood] = "positive"
+    redirect_to(:friends, :notice => "#{name} is now your friend!")
   end
 
   def destroy

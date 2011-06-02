@@ -6,12 +6,13 @@ class FriendsController < ApplicationController
 
       invite = Invite.create(:user => current_user, :user_target => @user, :message => "I wanna be your friend", :is_accepted => false)
 
-      notification = Notification.create(current_user, @user, invite, FriendInvitationNotification)
-      notification.save!
+      FriendInvitationNotification.create(:user => current_user, :recipient =>@user, :target => current_user )
+
+      flash[:mood] = "positive"
       redirect_to(:back, :notice => "Invitation sent.")
     else
-      mood = :negative
-      redirect_to(:back, :notice => "Invitation already sent.", :mood => mood)
+      flash[:mood] = "neutral"
+      redirect_to(:back, :notice => "Invitation already sent.", :mood =>"neutral")
     end
   end
 
@@ -22,9 +23,9 @@ class FriendsController < ApplicationController
     Invite.delete(myinv)
     Invite.delete(targetinv)
     user.reload and current_user.reload
-    notification = Notification.create(current_user, user, current_user, FriendshipEndingNotification)
-    notification.save!
-    redirect_to(user, :notice => "Friendship ended succesfully.", :mood => :neutral)
+    FriendshipEndingNotification.create(:user => current_user, :recipient => user, :target => current_user )
+    flash[:mood] = "neutral"
+    redirect_to(user, :notice => "Friendship ended succesfully.")
   end
 
   def index
