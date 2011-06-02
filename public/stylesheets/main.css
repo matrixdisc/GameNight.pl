@@ -66,8 +66,8 @@ table#notifications{
     position: relative;
 }
 #header {
-    height: 100px;
-    margin: 0 20px 0 20px;
+    height: 74px;
+    margin: 0 20px;
     position: relative;
     /*width: 930px;*/
 }
@@ -76,7 +76,7 @@ table#notifications{
     background: none repeat scroll 0 0 #FFFFFF;
     border-radius: 4px 4px 4px 4px;
     box-shadow: 0 0 6px #C6C6C6;
-    margin: -31px auto 10px;
+    margin: -10px auto 10px;
     padding: 22px 15px;
     position: relative;
     width: 1000px;
@@ -92,8 +92,7 @@ a {
     padding: 0;
     position: absolute;
     left: 0;
-    top: 17px;
-    z-index: 99;
+    top: 8px;
 }
 #logo li{
     list-style: none;
@@ -104,7 +103,7 @@ a {
     padding: 0;
     position: absolute;
     right: 0;
-    top: 30px;
+    top: 23px;
 }
 #nav li, #countdown li {
     position: relative;
@@ -250,6 +249,11 @@ ul.token-input-list-facebook {
     float: left;
 }
 
+#top_pattern {
+    background: url("../images/pattern.png") repeat scroll 0 0 transparent;
+    border-bottom:1px solid black;
+   height: 5px;
+}
 .gamenight_tile_body{
     height:419px;
 }
