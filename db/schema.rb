@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(:version => 20110531152027) do
 
   create_table "gamenights", :force => true do |t|
     t.integer  "host_id",       :null => false
-    t.string   "name",          :null => false
+    t.string   "name"
     t.string   "description"
     t.string   "location"
     t.datetime "start_time"
@@ -48,6 +48,15 @@ ActiveRecord::Schema.define(:version => 20110531152027) do
   create_table "games_users", :id => false, :force => true do |t|
     t.integer "user_id"
     t.integer "game_id"
+  end
+
+  create_table "invitations", :force => true do |t|
+    t.integer  "user_id",        :null => false
+    t.integer  "user_id_target", :null => false
+    t.string   "code"
+    t.text     "message"
+    t.boolean  "is_accepted"
+    t.datetime "accepted_at"
   end
 
   create_table "invites", :force => true do |t|
@@ -85,8 +94,5 @@ ActiveRecord::Schema.define(:version => 20110531152027) do
     t.string   "last_name"
     t.string   "location"
   end
-
-  add_index "users", ["email"], :name => "index_users_on_email"
-  add_index "users", ["username"], :name => "index_users_on_username"
 
 end
