@@ -15,6 +15,29 @@
     width: 500px;
 }
 
+
+.button a{
+    color: #333333;
+}
+.button:hover{
+
+    background-color: #eef6e3;
+}
+.button {
+    -moz-transition: background 200ms linear 0s;
+    -webkit-transition: background 200ms linear;
+    background-color: #E0E4CC;
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 0 0 3px #171717;
+    font-family: 'GentiumBasicRegular',Tahoma,Geneva,sans-serif;
+    font-size: 14px;
+    margin: 0 0 8px 0px;
+    padding: 3px;
+    position: relative;
+    text-align: center;
+    text-shadow: 1px 0 2px #EEEEEE;
+    transition: background 200ms linear;
+}
 .negative{
 	background-color: #B92734;
 }
@@ -150,7 +173,7 @@ a {
 }
 .new_gamenight_button:hover{
 
-    background-color: #faffe3;
+    background-color: #eef6e3;
 }
 .new_gamenight_button{
     -webkit-box-shadow: 0px 0px 0px #171717;

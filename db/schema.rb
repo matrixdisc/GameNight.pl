@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110531152027) do
+ActiveRecord::Schema.define(:version => 20110605161315) do
 
   create_table "gamenight_invitations", :force => true do |t|
     t.integer  "user_id",          :null => false
@@ -73,6 +73,14 @@ ActiveRecord::Schema.define(:version => 20110531152027) do
 
   add_index "notifications", ["target_type", "target_id"], :name => "index_notifications_on_target_type_and_target_id"
 
+  create_table "user_settings", :force => true do |t|
+    t.integer "user_id"
+    t.boolean "has_twitter"
+    t.boolean "send_tweet_on_gn_creation"
+    t.boolean "email_on_pokes"
+    t.boolean "email_on_invitations"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "username"
     t.string   "email"
@@ -84,6 +92,10 @@ ActiveRecord::Schema.define(:version => 20110531152027) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "location"
+    t.string   "twitter_screenname"
+    t.string   "twitter_token"
+    t.string   "twitter_secret"
+    t.integer  "user_settings_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

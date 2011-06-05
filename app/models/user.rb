@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
 
   validates :username, :format => { :with => /\A[A-Za-z0-9_]+\z/ }
   validates :username, :length => {:maximum => 32}
+  has_one :user_settings
   has_many :gamenight_invitations
   has_many :gamenights, :through => :gamenight_invitations
   has_and_belongs_to_many :games

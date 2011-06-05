@@ -1,26 +1,76 @@
 <h1>Editing user</h1>
 
-<%= semantic_form_for(@user) do |f| %>
-  <%= f.error_messages %>
-  <%= f.inputs :title => "Account information" do %>
-    <%= f.input :username %>
-    <%= f.input :email %>
-    <%= f.input :password %>
-    <%= f.input :password_confirmation %>
-  <% end %>
-  <%= f.inputs :title => "Profile information" do %>
-      <%= f.input :first_name %>
-      <%= f.input :last_name %>
-      <%= f.input :location %>
-      <%= f.input :games_tokens, :label => "Favorite games", :input_html => { "data-pre" => @user.games.map(&:attributes).to_json } %>
-  <% end %>
 
-  <%= f.buttons %>
-<% end %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<table style="width:900px">
+  <tr>
+    <td>
+        <%= semantic_form_for(@user) do |f| %>
+          <%= f.error_messages %>
+          <%= f.inputs :title => "Account information" do %>
+            <%= f.input :username %>
+            <%= f.input :email %>
+            <%= f.input :password %>
+            <%= f.input :password_confirmation %>
+          <% end %>
+          <%= f.inputs :title => "Profile information" do %>
+              <%= f.input :first_name %>
+              <%= f.input :last_name %>
+              <%= f.input :location %>
+              <%= f.input :games_tokens, :label => "Favorite games", :input_html => { "data-pre" => @user.games.map(&:attributes).to_json } %>
+          <% end %>
 
+          <%= f.buttons %>
+        <% end %>
+
+        <%= link_to 'Show', @user %> |
+        <%= link_to 'Back', users_path %>
+    </td>
+    <td style="vertical-align:top;padding:0 0 0 28px;">
+      <%= form_for(current_user.user_settings) do |f| %>
+      <table style="padding-bottom:20px;">
+        <% if current_user.user_settings.has_twitter %>
+        <tr>
+          <td>
+            <%= image_tag Twitter.profile_image(current_user.twitter_screenname, :size => 'mini') %>
+            Twitter account: <strong>'<%= current_user.twitter_screenname %>'</strong>
+          </td>
+        </tr>
+        <tr>
+            <td>
+              <div class="button" style="width:200px;">
+                <%= link_to "Unlink twitter account", :controller => "twitter", :action => "unlink" %>
+              </div>
+            </td>
+        </tr>
+        <tr>
+            <td><%= f.label "Send Tweet on GameNight creation" %></td>
+            <td><%= f.check_box :send_tweet_on_gn_creation %></td>
+        </tr>
+      <% else %>
+        <tr>
+            <div class="button" style="width:200px;">
+                <%= link_to "Link twitter account", :controller => "twitter", :action => "add_credentials" %>
+            </div>
+      </tr>
+      <% end %>
+      <tr>
+        <td>Email me when I receive a poke</td>
+        <td><%= f.check_box :email_on_pokes %></td>
+      </tr>
+      <tr>
+        <td>Email me when I receive a GameNight invitation</td>
+        <td><%= f.check_box :email_on_invitations %></td>
+        </div>
+      </tr>
+      </table>
+      <div class="actions">
+        <%= f.submit "Save user settings"%>
+      </div>
+    <% end %>
+    </td>
+    </tr>
+</table>
 
 <script type="text/javascript">
   $(function () {

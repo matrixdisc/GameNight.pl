@@ -19,6 +19,14 @@ if @marcel.save
 else
   puts "marcel not saved"
 end
+@user_settings_matrix = UserSettings.create(:user_id => @matrix.id, :has_twitter => false, :send_tweet_on_gn_creation => false, :email_on_pokes => true, :email_on_invitations => false)
+@user_settings_marcel = UserSettings.create(:user_id => @marcel.id, :has_twitter => false, :send_tweet_on_gn_creation => false, :email_on_pokes => true, :email_on_invitations => false)
+if @user_settings_marcel.save and @user_settings_matrix.save
+  puts "user settings created"
+else
+  puts "user settings creation failed"
+end
+
 @friendship = Invite.create(:user => @matrix, :user_target => @marcel, :message => "Friends?", :is_accepted => true)
 if @friendship.save
   puts "ma_trix and marcel are friends now"

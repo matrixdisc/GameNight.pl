@@ -13,6 +13,9 @@ gem 'jquery-rails'
 gem 'carrierwave'
 gem 'fog'
 gem 'rmagick'
+gem 'twitter'
+gem 'oauth'
+gem "mail"
 group :development do
 	gem 'annotate-models'
 end

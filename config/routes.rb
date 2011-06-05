@@ -1,7 +1,15 @@
 GameNightPl::Application.routes.draw do
 
+
+  get "twitter/add_credentials"
+  get "twitter/authenticated"
+
+  get "twitter/send_tweet"
+  match 'user_settings' => 'user_settings#edit'
+  match 'unlink_twitter' => 'twitter#unlink'
+
   root :to => "dashboard#index"
-  resources :users, :user_sessions, :friends, :invites, :gamenights, :gamenight_invitations, :games, :notifications
+  resources :users, :user_sessions, :user_settings, :friends, :invites, :gamenights, :gamenight_invitations, :games, :notifications
 
   match 'accept_invite' => 'invites#accept', :as => :accept_invite
   match 'send_invite' => 'friends#send_invite', :as => :send_invite
@@ -16,7 +24,8 @@ GameNightPl::Application.routes.draw do
   match 'gamenight_invitations/reject/:id' => 'gamenight_invitations#reject'
   match 'new_gamenight' => 'gamenights#new', :as => :new_gamenight
   match 'dashboard' => 'dashboard#index', :as => :dashboard
-  # The priority is based upon order of creation:
+  match 'user_settings_show' => 'user_settings#show'
+      # The priority is based upon order of creation:
   # first created -> highest priority.
 
   # Sample of regular route:

@@ -1,0 +1,40 @@
+<%= form_for(@user_setting) do |f| %>
+  <table>
+    <% if current_user.user_settings.has_twitter %>
+    <tr>
+      <td>
+        Linked Twitter account: '<%= current_user.twitter_screenname %>
+      </td>
+    </tr>
+    <tr>
+        <td>
+          <div class="button" style="width:200px;">
+            <%= link_to "Unlink twitter account", :controller => "twitter", :action => "unlink" %>
+          </div>
+        </td>
+    </tr>
+    <tr>
+        <td><%= f.label "Send Tweet on GameNight creation" %></td>
+        <td><%= f.check_box :send_tweet_on_gn_creation %></td>
+    </tr>
+  <% else %>
+    <tr>
+        <div class="button" style="width:200px;">
+            <%= link_to "Link twitter account", :controller => "twitter", :action => "add_credentials" %>
+        </div>
+  </tr>
+  <% end %>
+  <tr>
+    <td>Email me when I receive a poke</td>
+    <td><%= f.check_box :email_on_pokes %></td>
+  </tr>
+  <tr>
+    <td>Email me when I receive a GameNight invitation</td>
+    <td><%= f.check_box :email_on_invitations %></td>
+    </div>
+  </tr>
+  </table>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

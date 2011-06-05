@@ -36,10 +36,11 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
     @user = User.new(params[:user])
-
+    UserSetting.create(:user_id => @user.id, :has_twitter => false, :send_tweet_on_gn_creation => false, :email_on_pokes => true, :email_on_invitations => false)
     respond_to do |format|
       if @user.save
         flash[:mood] = "positive"
+        UserMailer.registration_confirmation(@user).deliver
         format.html { redirect_to(:users, :notice => 'Registration successful.') }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
