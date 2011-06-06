@@ -1,54 +1,46 @@
-<p id="notice"><%= notice %></p>
+<div class="gamenight_details">
+  <%= image_tag @gamenight.game.cover.thumb.url, :class => "avatar" if (@gamenight.game and @gamenight.game.cover.thumb.url) %>
+  <h1 class="gamenight_name"><%= @gamenight.name %></h1>
+  <h2 class="gamenight_duration"><%= @gamenight.duration%> <%= "@ #{@gamenight.location}" if not @gamenight.location.empty? %></h2>
+  <h2 class="gamenight_hosted_by">Hosted by <%= link_to @gamenight.user.full_name, @gamenight.user %></h2>
+  <div class="clear_fix"></div>
+</div>
+<section class="profile_box" style="width: 100%">
+  <h1>
+    Players (<%= @gamenight.gamenight_invitations.size + 1 %><%= "/#{@gamenight.players_slots}" if @gamenight.players_slots%>)
+    <%= link_to "Invite", :controller => "gamenight_invitations", :action => "invite_friends", :gamenight_id => @gamenight.id if @gamenight.can_invite_more_people? %>
+  </h1>
+  <%
+      players = Array.new
+      players.push(@gamenight.user)
+      players = players.concat(@gamenight.gamenight_invitations.map { |i| i.user })
+  %>
 
-<p>
-  <b>Name:</b>
-  <%= @gamenight.name %>
-</p>
-
-<p>
-  <b>Game:</b>
-  <%= if @gamenight.game then @gamenight.game.name else "unknown" end %>
-</p>
-
-
-
-<p>
-  <b>Description:</b>
-  <%= @gamenight.description %>
-</p>
-
-<p>
-  <b>Start time:</b>
-  <%= @gamenight.start_time%>
-</p>
-
-<p>
-  <b>End time:</b>
-  <%= @gamenight.end_time%>
-</p>
-
-<p>
-  <b>Location:</b>
-  <%= @gamenight.location%>
-</p>
-
-<p>
-  <b>Players:</b>
-  <%= @gamenight.gamenight_invitations.count %>
-  <% unless @gamenight.players_slots.nil? %>
-    <%= "/ " + @gamenight.players_slots.to_s %>
+  <ul class="user_list">
+  <% players.each do |user| %>
+    <li>
+      <p>
+        <%= link_to user do %>
+          <span class="user_avatar"><%= image_tag user.gravatar_url %></span>
+          <span class="user_name"><%= user.username %></span>
+        <% end %>
+      </p>
+    </li>
   <% end %>
-</p>
 
-<p>
-  <b>Invited players:</b>
-</p>
-<ol>
-  <% @gamenight.gamenight_invitations.each do |i|%>
-  <li><%= link_to i.user.username, :controller => "users", :action => "show", :id => i.user.id %></li>
-  <% end %>
-</ol>
 
-<p>
-  <b><%= link_to "Invite more players", :controller => "gamenight_invitations", :action => "invite_friends", :gamenight_id => @gamenight.id %></b>
-</p>
+  <% (players.size+1..@gamenight.players_slots).each do |i| %>
+     <li>
+     <p>
+        <%= link_to :controller => "gamenight_invitations", :action => "invite_friends", :gamenight_id => @gamenight.id do %>
+          <span class="user_avatar"><%= image_tag "freespot.png" %></span>
+          <span class="user_name">Invite</span>
+        <% end %>
+      </p>
+    </li>
+  <% end if @gamenight.players_slots %>
+
+  </ul>
+  <div class="clear_fix"></div>
+</section>
+<div class="clear_fix"></div>

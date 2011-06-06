@@ -4,12 +4,16 @@
 .user_list p { margin: 0 auto; text-align: center; }
 .user_list a { text-decoration: none; }
 .user_list .user_avatar img { border: 1px solid gray; }
+.user_list span { display: block; }
 .clear_fix { clear: both; }
 
 .avatar { float: left; margin-right: 15px; margin-bottom: 40px;}
 #content .full_name { margin: 0px;}
 #content .user_profile .user_name { margin: 0; color: #ababab;}
 
+#content .gamenight_details .gamenight_name { clear: none; float: none; margin: 0; font-size: 25px; }
+#content .gamenight_details .gamenight_duration {  color: #ababab; font-size: 14px; margin: 0;}
+#content .gamenight_details .gamenight_hosted_by { color: #ababab; font-size: 14px; margin: 0;}
 
 .ui-timepicker-div .ui-widget-header{ margin-bottom: 8px; }
 .ui-timepicker-div dl{ text-align: left; }
