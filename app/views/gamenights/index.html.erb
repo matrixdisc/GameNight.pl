@@ -14,7 +14,7 @@
   <tr>
     <td><%= link_to gamenight.user.username, gamenight.user, :action => 'show', :controller => 'users' %></td>
     <td><%= gamenight.name %></td>
-    <td><%= gamenight.game.name if gamenight.game %></td>    
+    <td><%= gamenight.game_titles %></td>    
     <td><%= gamenight.location %></td>
     <td><%= gamenight.start_time %></td>
     <td><%= link_to 'show', gamenight %></td>

@@ -1,5 +1,4 @@
 <div class="gamenight_details">
-  <%= image_tag @gamenight.game.cover.thumb.url, :class => "avatar" if (@gamenight.game and @gamenight.game.cover.thumb.url) %>
   <h1 class="gamenight_name"><%= @gamenight.name %></h1>
   <h2 class="gamenight_duration"><%= @gamenight.duration%> <%= "@ #{@gamenight.location}" if not @gamenight.location.empty? %></h2>
   <h2 class="gamenight_hosted_by">Hosted by <%= link_to @gamenight.user.full_name, @gamenight.user %></h2>
@@ -42,5 +41,18 @@
 
   </ul>
   <div class="clear_fix"></div>
+</section>
+
+<section class="profile_box">
+  <h1>We will be playing</h1>
+  <ul class="game_list">
+    <% @gamenight.games.each do |game| %>
+    <li class="game_entry">
+      <%= image_tag game.cover.thumb.url if game.cover.thumb.url %>
+      <span><%= game.name %></span>
+    </li>
+    <% end %>
+  </ul>
+<div class="clear_fix"></div>
 </section>
 <div class="clear_fix"></div>
