@@ -12,4 +12,13 @@
 
 class Game < ActiveRecord::Base
   mount_uploader :cover, GameCoverUploader
+
+  def thumb_url
+    self.cover.thumb.url
+  end
+
+
+  def to_json
+    return self.attributes.merge(thumb_url: self.thumb_url)
+  end
 end
