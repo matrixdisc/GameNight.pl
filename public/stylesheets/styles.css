@@ -1,4 +1,4 @@
-.user_list { list-style: none; }
+.user_list { list-style: none; padding: 5px 15px;}
 .user_list li { float: left; width: 120px;}
 
 .user_list p { margin: 0 auto; text-align: center; }
@@ -20,3 +20,11 @@
 .ui-timepicker-div dl dt{ height: 25px; }
 .ui-timepicker-div dl dd{ margin: -25px 0 10px 65px; }
 .ui-timepicker-div td { font-size: 90%; }
+
+.game_list { list-style: none; padding: 5px 15px; }
+.game_list li { float: left; width: 120px;}
+
+.game_list { margin: 0 auto; text-align: center; }
+.game_list a { text-decoration: none; }
+.game_list img { border: 0; }
+.game_list span { display: block; }

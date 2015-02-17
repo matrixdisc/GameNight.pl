@@ -28,7 +28,8 @@ var DEFAULT_SETTINGS = {
     animateDropdown: true,
     onResult: null,
     onAdd: null,
-    onDelete: null
+    onDelete: null,
+    customRenderer: null
 };
 
 // Default classes to use when theming
@@ -538,6 +539,14 @@ $.TokenList = function (input, url_or_data, settings) {
         return value.replace(new RegExp("(?![^&;]+;)(?!<[^<>]*)(" + term + ")(?![^<>]*>)(?![^&;]+;)", "gi"), "<b>$1</b>");
     }
 
+    // Render single dropdown item
+    function create_dropdown_item(index, value) {
+      if(settings.customRenderer) {
+        return settings.customRenderer(index, value);
+      }
+      return $("<li>" + value.highlighted_name + "</li>");
+    }
+
     // Populate the results dropdown with some results
     function populate_dropdown (query, results) {
         if(results && results.length) {
@@ -554,8 +563,9 @@ $.TokenList = function (input, url_or_data, settings) {
                 .hide();
 
             $.each(results, function(index, value) {
-                var this_li = $("<li>" + highlight_term(value.name, query) + "</li>")
-                                  .appendTo(dropdown_ul);
+                value.highlighted_name = highlight_term(value.name, query);
+                var this_li = create_dropdown_item(index, value);
+                this_li.appendTo(dropdown_ul);
 
                 if(index % 2) {
                     this_li.addClass(settings.classes.dropdownItem);

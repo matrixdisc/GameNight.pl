@@ -17,13 +17,13 @@
 #
 
 class Gamenight < ActiveRecord::Base
-  attr_accessible :name, :description, :location, :start_time, :end_time, :players_slots, :user, :game_id
+  attr_accessible :name, :description, :location, :start_time, :end_time, :players_slots, :user, :game_id, :game_tokens
 
   validates :name, :presence => true, :length => { :maximum => 255 }
   validates :host_id, :presence => true
 
+  has_and_belongs_to_many :games
   belongs_to :user, :foreign_key => 'host_id'
-  belongs_to :game
   has_many :gamenight_invitations
   has_many :users , :through => :gamenight_invitations
 
@@ -46,4 +46,17 @@ class Gamenight < ActiveRecord::Base
   def can_invite_more_people?
     self.players_slots.nil? || (self.players_slots > self.gamenight_invitations.size + 1)
   end
+
+  def game_titles
+    self.games.map{|game| game.name}.join(", ")
+  end
+
+  def game_tokens
+    self.game_ids.join(',')
+  end
+  
+  def game_tokens=(ids)
+    self.game_ids = ids.split(',')
+  end 
+
 end

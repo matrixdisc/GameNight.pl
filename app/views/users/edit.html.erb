@@ -17,7 +17,7 @@
               <%= f.input :first_name %>
               <%= f.input :last_name %>
               <%= f.input :location %>
-              <%= f.input :games_tokens, :label => "Favorite games", :input_html => { "data-pre" => @user.games.map(&:attributes).to_json } %>
+              <%= f.input :games_tokens, :label => "Favorite games", :input_html => { "data-pre" => @user.games.map(&:to_json).to_json } %>
           <% end %>
 
           <%= f.buttons %>
@@ -72,8 +72,23 @@
     </tr>
 </table>
 
+<script type="text/x-jquery-tmpl" id="game_autocomplete_element">
+<li class="game_entry">
+    {{if thumb_url}}
+    <img src="${thumb_url}"></img>
+    {{/if}}
+    <span>{{html highlighted_name}}</span>
+</li>
+</script>
+
 <script type="text/javascript">
   $(function () {
-    $('#user_games_tokens').tokenInput('/games.json', { crossDomain: false, theme: 'facebook' });
+      $('#user_games_tokens').tokenInput('/games.json', {
+        crossDomain: false,
+        theme: 'facebook',
+        customRenderer: function(index, value) {
+          return $("#game_autocomplete_element").tmpl(value);
+        }
+      });
   });
 </script>

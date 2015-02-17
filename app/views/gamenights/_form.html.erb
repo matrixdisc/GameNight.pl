@@ -1,99 +1,8 @@
-<script id="games_autocomplete_element" type="text/x-jquery-tmpl">
-  <li class="game_entry">
-  <a>
-    {{if thumb}}
-    <img src="${thumb}"></img>
-    {{/if}}
-    <span>{{html label}}</span>
-  </a>
-  </li>
-</script>
-<script type="text/javascript">
-  $.widget("ui.combobox", {
-    _create: function() {
-      var self = this;
-      var select = this.element.hide();
-      var input = $("<input>")
-        .insertAfter(select)
-        .autocomplete({
-          source: function(request, response) {
-            var matcher = new RegExp(request.term, "i");
-            response(select.children("option").map(function() {
-              var text = $(this).text();
-              if (!request.term || matcher.test(text))
-                return {
-                  id: $(this).val(),
-                  label: text.replace(new RegExp("(?![^&;]+;)(?!<[^<>]*)(" + request.term.replace(/([\^\$\(\)\[\]\{\}\*\.\+\?\|\\])/gi, "\\$1") + ")(?![^<>]*>)(?![^&;]+;)", "gi"), "<strong>$1</strong>"),
-                  value: text,
-                  thumb: $(this).data('thumb-url')
-                };
-            }));
-          },
-          delay: 0,
-          select: function(e, ui) {
-            if (!ui.item) {
-              // remove invalid value, as it didn't match anything
-              $(this).val("");
-              return false;
-            }
-            $(this).focus();
-            select.val(ui.item.id);
-            self._trigger("selected", null, {
-              item: select.find("[value='" + ui.item.id + "']")
-            });
-          },
-          minLength: 0
-        })
-        .addClass("ui-widget ui-widget-content ui-corner-left");
-
-
-      input.data("autocomplete")._renderItem = function(ul, item) {
-        return $("#games_autocomplete_element").tmpl(item)
-          .data("item.autocomplete", item)
-          .appendTo(ul);
-      }
-      $("<button type=\"button\">&nbsp;</button>")
-      .insertAfter(input)
-      .button({
-        icons: {
-          primary: "ui-icon-triangle-1-s"
-        },
-        text: false
-      }).removeClass("ui-corner-all")
-      .addClass("ui-corner-right ui-button-icon")
-      .position({
-        my: "left center",
-        at: "right center",
-        of: input,
-        offset: "-1 0"
-      }).css("top", "")
-      .click(function() {
-        // close if already visible
-        if (input.autocomplete("widget").is(":visible")) {
-          input.autocomplete("close");
-          return;
-        }
-        // pass empty string as value to search for, displaying all results
-        input.autocomplete("search", "");
-        input.focus();
-      });
-    }
-  });
-
-</script>
-
 <%= semantic_form_for(@gamenight) do |f|%>
   <%= f.error_messages %>
   <%= f.inputs do %>
     <%= f.input :name %>
-    <li class="select optional" id="gamenight_game_input">
-      <label for="gamenight_game_id">Game</label>
-      <select id="gamenight_game_id" name="gamenight[game_id]"><option value="">TBD</option>
-        <% Game.all.each do |game| %>
-          <option value="<%= game.id %>" data-thumb-url="<%= game.cover.thumb.url %>"><%= game.name %></option>
-        <% end %>
-      </select>
-    </li>
+    <%= f.input :game_tokens, :label => "Games", :input_html => { "data-pre" => @gamenight.games.map(&:to_json).to_json } %>
     <%= f.input :description %>
     <%= f.input :location %>
     <%= f.input :start_time, :as => :string, :input_html => { :size => 20, :class => 'datetime' } %>
@@ -103,32 +12,23 @@
   <%= f.buttons %>
 <% end %>
 
-<script type="text/javascript">
-  $(function() {
-      $("#gamenight_game_id").combobox();
-  });
+<script type="text/x-jquery-tmpl" id="game_autocomplete_element">
+<li class="game_entry">
+    {{if thumb_url}}
+    <img src="${thumb_url}"></img>
+    {{/if}}
+    <span>{{html highlighted_name}}</span>
+</li>
 </script>
-<style>
-		.ui-button-icon-only .ui-button-text { padding: 0.35em; height: 21px; }
-		.ui-autocomplete-input { padding: 0.48em 0 0.47em 0.45em !important; background: none !important; height: 18px;}
-    .ui-autocomplete { width: 315px; vertical-align: middle; }
 
-    .game_entry {
-      width: 90px !important;
-      height: 120px !important;
-      padding: 5px;
-      float: left !important;
-      clear: none !important;
-      margin: 5px !important;
-    }
-
-    .game_entry a {
-      width: 100%;
-      height: 100%;
-    }
-
-    .game_entry img {
-      display: block;
-    }
-	</style>
+<script type="text/javascript">
+  $(function () {
+      $('#gamenight_game_tokens').tokenInput('/games.json', {
+        crossDomain: false,
+        theme: 'facebook',
+        customRenderer: function(index, value) {
+          return $("#game_autocomplete_element").tmpl(value);
+        }
+      });
+  });
 </script>

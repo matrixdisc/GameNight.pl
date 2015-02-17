@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110605161315) do
+ActiveRecord::Schema.define(:version => 20110610201125) do
 
   create_table "gamenight_invitations", :force => true do |t|
     t.integer  "user_id",          :null => false
@@ -33,10 +33,14 @@ ActiveRecord::Schema.define(:version => 20110605161315) do
     t.integer  "players_slots"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "game_id"
   end
 
   add_index "gamenights", ["host_id"], :name => "index_gamenights_on_host_id"
+
+  create_table "gamenights_games", :id => false, :force => true do |t|
+    t.integer "game_id"
+    t.integer "gamenight_id"
+  end
 
   create_table "games", :force => true do |t|
     t.string   "name"
